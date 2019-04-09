@@ -31,7 +31,7 @@ app.post('/viber',(req,res)=>{
   
 });
 
-app.get('/viber',(req,res)=>{
+app.get('/dflowGuide',(req,res)=>{
     res.sendFile(__dirname + '/public/start.html');
 
 })
