@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static('public'))
+app.use(express.static('public/start.html'))
 
 
 // Home Page
@@ -32,7 +32,7 @@ app.post('/viber',(req,res)=>{
 });
 
 app.get('/viber',(req,res)=>{
-    res.send(req.query.num);
+   
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
