@@ -18,6 +18,10 @@ app.get('/',(req,res)=>{
     res.send('<h1>Testing</h1>');
 });
 
+app.get('/stuff',(req,res)=>{
+    res.send(req.body)
+})
+
 // Request sent from viber
 app.post('/viber',(req,res)=>{
     res.send(req.body);
