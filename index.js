@@ -32,7 +32,7 @@ app.post('/viber',(req,res)=>{
 });
 
 app.get('/viber',(req,res)=>{
-    res.sendFile('public/index.html');
+    res.sendFile(__dirname + '/start.html');
 
 })
 
