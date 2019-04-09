@@ -35,5 +35,9 @@ app.get('/dflowGuide',(req,res)=>{
     res.sendFile(__dirname + '/public/dflowGuide.html');
 
 })
+app.get('/viberGuide',(req,res)=>{
+    res.sendFile(__dirname + '/public/viberGuide.html');
+
+})
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
