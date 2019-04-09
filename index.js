@@ -32,7 +32,8 @@ app.post('/viber',(req,res)=>{
 });
 
 app.get('/viber',(req,res)=>{
-   
+    res.sendFile('public/index.html');
+
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
