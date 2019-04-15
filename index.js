@@ -113,11 +113,11 @@ app.get('/trainingPhrases',(req,res)=>{
                           client_email: document.chat_service.dialogflow.client_email
                         }
                       }
-
+                  var phrases = []
                   dflow.getIntent(projectID,data.intentID,config).then(function(result){
                       var trainingPhrases = result.trainingPhrases
                       trainingPhrases.forEach(function(phrase){
-                        var phrases = []
+                        
                         phrases.push(phrase.parts.text)
                         
                       })
