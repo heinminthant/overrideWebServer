@@ -121,7 +121,8 @@ app.get('/trainingPhrases',(req,res)=>{
                        phrases.push(phrase.parts[0].text)
                         
                       })
-                    var data = {'phrases' : phrases}
+                    var data = {'phrases' : phrases,
+                    'userID' : user_id, 'intentID' : req.query.intentID}
                     res.render('pages/trainingPhrases',{data:data})
 
                       
@@ -138,8 +139,10 @@ app.get('/trainingPhrases',(req,res)=>{
     })
 
     app.post('/storePhrases',(req,res)=>{
-        db.getDocument(user_id).then(function(document){
         var intentID = req.query.intentID
+        var user_id = req.query.userID
+        db.getDocument(user_id).then(function(document){
+       
         var privateKey = document.chat_service.dialogflow.private_key;
         var projectID = document.chat_service.dialogflow.project_id
         var privateKey = crypto.decrypt(privateKey);

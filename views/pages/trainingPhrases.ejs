@@ -89,12 +89,14 @@
      
         phrases.push($("#field"+i).val())
       }
-      data = {}
-      data.phrases = phrases
+      data2 = {}
+      data2.phrases = phrases
+      data2.userID = data.userID
+      data2.intentID = data.intentID
       $.ajax({
           type: "POST",
           url: "https://override-webserver.herokuapp.com/storePhrases",
-          data: JSON.stringify(data),
+          data: JSON.stringify(data2),
           contentType: 'application/json',
           success: function (response) {
               
