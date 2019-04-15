@@ -101,8 +101,10 @@ app.get('/trainingPhrases',(req,res)=>{
                 res.render('pages/login',{data:data})
             }
             else{
-                var document = db.getDocument(user_id)
-                console.log(document)
+                var document = db.getDocument(user_id).then(function(result){
+                    console.log(result)
+                })
+                
                 // res.render('pages/trainingPhrases',{data:data})
             }
            
