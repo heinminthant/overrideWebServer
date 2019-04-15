@@ -74,7 +74,7 @@ app.get('/viberGuide',(req,res)=>{
 
 app.get('/trainingPhrases',(req,res)=>{
     if(req.query.userID === undefined || req.query.intentID === undefined){
-        res.render('/pages/wrongURL')
+        res.render('pages/wrongURL')
     }
     else{
         var user_id = parseInt(req.query.userID)
