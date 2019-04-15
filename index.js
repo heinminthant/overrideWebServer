@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
@@ -50,7 +49,7 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    res.render('pages/trainingPhrases')
+    res.render('pages/index')
 })
 
 app.post('/storePhrases',(req,res)=>{
