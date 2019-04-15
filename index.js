@@ -75,7 +75,9 @@ app.get('/viberGuide',(req,res)=>{
 app.get('/trainingPhrases',(req,res)=>{
     req.session.token = req.query.token
     
+    console.log(req.query.userID)
     
+
     if(req.query.userID === undefined || req.query.intentID === undefined){
         res.send('Bad Bitch')
     }
