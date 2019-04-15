@@ -71,7 +71,10 @@ app.get('/viberGuide',(req,res)=>{
 
 app.get('/trainingPhrases',(req,res)=>{
     // console.log(req.query)
-    console.log(req.query)
+    console.log(req.session.user)
+    req.session.user = 1
+    console.log(req.session.user)
+    // console.log(req.query)
     res.render('pages/index')
 })
 
