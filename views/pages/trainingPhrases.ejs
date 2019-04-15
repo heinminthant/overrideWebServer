@@ -48,7 +48,7 @@
     var data = <%- JSON.stringify(data)%>
     var phrases = data.phrases
     if(phrases.length==0){
-        $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" id = "field' + counter + '"placeholder="Add Training Phrase" class="validate" value='+phrase +'> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
+        $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" id = "field' + counter + '"placeholder="Add Training Phrase" class="validate"> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
         counter++;
         console.log("Yes")
     }
