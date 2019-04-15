@@ -23,7 +23,7 @@ $(document).ready(function () {
       $.ajax({
           type: "POST",
           url: "https://override-webserver.herokuapp.com/storePhrases",
-          data: {data:phrases},
+          data: JSON.stringify(phrases),
           success: function (response) {
               
           }
