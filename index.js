@@ -73,8 +73,7 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    console.log(req.query.intentID)
-    console.log(req.query.userID)
+    
     if(req.query.userID === undefined || req.query.intentID === undefined){
         res.send('Bad Bitch')
     }
@@ -82,9 +81,9 @@ app.get('/trainingPhrases',(req,res)=>{
         var user_id = parseInt(req.query.userID)
         db.getDocument(user_id).then(function(result){
             if(req.session.token === undefined || req.session.token !== result.utoken){
-                res.send('Bad Bitch')
+                res.send('Login Bitch')
             }
-            console.log(result.utoken)
+           
         })
     }
     
