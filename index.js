@@ -51,7 +51,7 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    console.log(req)
+    console.log(req.query)
     res.render('pages/index')
 })
 
