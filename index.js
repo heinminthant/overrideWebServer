@@ -47,11 +47,11 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    res.sendfile(__dirname + '/public/trainingPhrases.html')
+    res.render(__dirname + '/public/trainingPhrases.html')
 })
 
 app.post('/storePhrases',(req,res)=>{
-    console.log(req.body)
+    console.log(req.body.phrases)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
