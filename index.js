@@ -115,7 +115,12 @@ app.get('/trainingPhrases',(req,res)=>{
                       }
 
                   dflow.getIntent(projectID,data.intentID,config).then(function(result){
-                      console.log(result.trainingphrases.parts)
+                      var trainingPhrases = result.trainingPhrases
+                      trainingPhrases.forEach(function(phrase){
+                        console.log(phrase.parts)
+                      })
+
+                      
                   })
                     
                 })
