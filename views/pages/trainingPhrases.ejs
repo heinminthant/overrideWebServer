@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script>
-   var data = <%- JSON.stringify(data)%>
-        console.log(data)
-</script>
+
 
 
 <head>
@@ -26,6 +23,7 @@
   
     <form >
         <div id="phrases">
+            
             <div class="row" id="phrase1">
                 <input id="field1"  class="input-field col s12" type="text" placeholder="Add Training Phrase"
                     class="validate">
@@ -49,6 +47,8 @@
 </body>
 
 <script>
+       var data = <%- JSON.stringify(data)%>
+        console.log(data)
 
     var counter = 1
 
