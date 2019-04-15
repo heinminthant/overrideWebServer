@@ -44,4 +44,8 @@ app.get('/viberGuide',(req,res)=>{
 
 })
 
+app.get('/trainingPhrases',(req,res)=>{
+    res.sendfile(__dirname + '/public/trainingPhrases.html')
+})
+
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
