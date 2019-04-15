@@ -118,7 +118,7 @@ app.get('/trainingPhrases',(req,res)=>{
                       var trainingPhrases = result[0].trainingPhrases
                       trainingPhrases.forEach(function(phrase){
                         
-                       console.log(phrase)
+                       console.log(phrase[0])
                         
                       })
                      
