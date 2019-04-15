@@ -73,7 +73,7 @@ app.get('/viberGuide',(req,res)=>{
 app.get('/trainingPhrases',(req,res)=>{
     var userID = req.query.userID
     var intentID = req.query.intentID
-    
+    console.log(userID)
     db.getDocument(userID).then(function(result){
         console.log(result.utoken)
     })
