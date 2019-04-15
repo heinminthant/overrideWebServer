@@ -102,7 +102,7 @@ app.get('/trainingPhrases',(req,res)=>{
                 res.render('pages/login',{data:data})
             }
             else{
-                var document = db.getDocument(user_id).then(function(result){
+                var document = db.getDocument(user_id).then(function(document){
                     var privateKey = document.chat_service.dialogflow.private_key;
                     var projectID = document.chat_service.dialogflow.project_id
                     var privateKey = crypto.decrypt(privateKey);
