@@ -19,12 +19,11 @@ $(document).ready(function () {
      
         phrases.push($("#field"+i).val())
       }
-      var data = {phrases}
+ 
       $.ajax({
           type: "POST",
           url: "https://override-webserver.herokuapp.com/storePhrases",
-          data: data,
-          dataType: "text",
+          data: {data:phrases},
           success: function (response) {
               
           }
