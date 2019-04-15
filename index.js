@@ -71,13 +71,18 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    // console.log(req.query)
-    console.log(req.query)
+    var userID = req.query.userID
+    var intentID = req.query.intentID
+    
+    db.getDocument(userID).then(function(result){
+        console.log(result.utoken)
+    })
+
     req.session.user = 1
     
    
     // console.log(req.query)
-    res.render('pages/index')
+    res.render('pages/trainingPhrases')
 })
 
 app.post('/storePhrases',(req,res)=>{
