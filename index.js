@@ -3,9 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://admin:admin123@override-nekvr.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+
 
 
 
@@ -75,13 +73,10 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    var user_id = req.query.userID
-    client.connect(err => {
-        console.log(err)
-        // const collection = client.db("over_ride").collection("users");
-        // collection.findOne({user_id}).then(function(result){
-        //     console.log(result)
-        // })
+    var user_id = parseInt(req.query.userID)
+
+    db.getDocument(user_id).then(function(result){
+        console.log(result.utoken)
     })
 })
 

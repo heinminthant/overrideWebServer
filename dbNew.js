@@ -101,13 +101,13 @@ module.exports = {
             })
         },
         getDocument: function(userID){
-            console.log(userID)
+        
             return new Promise(function(resolve,reject){
                 client.connect(err => {
                     const collection = client.db("over_ride").collection("users");
     
                     collection.findOne({user_id:userID},function(err,result){
-                    console.log(result)
+                 
                     resolve(result);
                         
                     })
