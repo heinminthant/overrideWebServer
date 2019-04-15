@@ -139,9 +139,9 @@ app.get('/trainingPhrases',(req,res)=>{
     })
 
     app.post('/storePhrases',(req,res)=>{
-        phrases = req.body.phrases
-        user_id = req.body.userID
-        intentID = req.body.intentID
+        var phrases = req.body.phrases
+        var user_id = req.body.userID
+        var intentID = req.body.intentID
         db.getDocument(user_id).then(function(document){
        
         var privateKey = document.chat_service.dialogflow.private_key;
@@ -163,7 +163,9 @@ app.get('/trainingPhrases',(req,res)=>{
                 type: 'EXAMPLE'
             })
         })
-        dflow.updateIntent(projectID,config,intentID,trainingPhrases)
+        dflow.getIntent(projectID,intentID,config).then(function(result){
+            dflow.updateIntent(projectID,config,result,trainingPhrases)
+        })
         })
 })
 
