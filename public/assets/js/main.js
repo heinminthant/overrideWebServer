@@ -4,16 +4,23 @@ $(document).ready(function () {
     $("#add").click(function (e) { 
         counter++
         e.preventDefault()
-        $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" placeholder="Add Training Phrase" class="validate"> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
+        $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" id = "field' + counter + '"placeholder="Add Training Phrase" class="validate"> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
       
     });
-    $('#delete').click(function (e) { 
-        e.preventDefault();
-        
-    });
+    
 
     $('body').on('click','#delete',function(e){
         $(this).parent('div').remove()
+    })
+
+    $("#save").click(function (e) {
+       var i, phrases = []
+       for (i = 1; i <= counter; i++) {
+           console.log(i) 
+        phrases.push($("#field"+i).val())
+      }
+      console.log(phrases)
+        
     })
     
 });
