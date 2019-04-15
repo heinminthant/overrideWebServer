@@ -47,7 +47,7 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    res.render(__dirname + '/public/trainingPhrases')
+    res.render('pages/trainingPhrases')
 })
 
 app.post('/storePhrases',(req,res)=>{
