@@ -103,15 +103,16 @@ app.get('/trainingPhrases',(req,res)=>{
             }
             else{
                 var document = db.getDocument(user_id).then(function(result){
-                var privateKey = crypto.decrypt(result.chat_service.dialogflow.privateKey)
-                var projectID = document.chat_service.dialogflow.project_id
-
-                let config = {
-                    credentials: {
-                      private_key: privateKey,
-                      client_email: document.chat_service.dialogflow.client_email
-                    }
-                  }
+                    var privateKey = document.chat_service.dialogflow.private_key;
+                    var projectID = document.chat_service.dialogflow.project_id
+                    var privateKey = crypto.decrypt(privateKey);
+                      
+                      let config = {
+                        credentials: {
+                          private_key: privateKey,
+                          client_email: document.chat_service.dialogflow.client_email
+                        }
+                      }
 
                   dflow.getIntent(projectID,data.intentID,config).then(function(result){
                       console.log(result)
