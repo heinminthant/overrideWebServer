@@ -82,10 +82,10 @@ app.get('/trainingPhrases',(req,res)=>{
         var user_id = parseInt(req.query.userID)
         db.getDocument(user_id).then(function(result){
             if(req.session.token === undefined || req.session.token !== result.utoken){
-                res.render('pages/login')
+                res.render('pages/login',{user_id:user_id,intentID:req.query.intentID})
             }
            
-        })
+        }) 
     }
     
 })
