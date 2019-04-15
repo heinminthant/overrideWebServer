@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 5000;
 const db = require('./dbNew');
 const dflow = require('./dialogflow')
+const crypto = require('./crypto')
 
 //Web Server Init
 
@@ -102,7 +103,21 @@ app.get('/trainingPhrases',(req,res)=>{
             }
             else{
                 var document = db.getDocument(user_id).then(function(result){
-                    console.log(result)
+                var privateKey = crypto.decrypt(result.chat_service.dialogflow.privateKey)
+                var projectID = document.chat_service.dialogflow.project_id
+
+                let config = {
+                    credentials: {
+                      private_key: privateKey,
+                      client_email: document.chat_service.dialogflow.client_email
+                    }
+                  }
+
+                  dflow.getIntent(projectID,data.intentID,config).then(function(result{
+                      console.log(result)
+                  }))
+
+                    
                 })
                 
                 // res.render('pages/trainingPhrases',{data:data})
@@ -111,10 +126,10 @@ app.get('/trainingPhrases',(req,res)=>{
         }) 
     }
     
-})
+    })
 
-app.post('/storePhrases',(req,res)=>{
-    console.log(req.body.phrases)
+    app.post('/storePhrases',(req,res)=>{
+        console.log(req.body.phrases)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
