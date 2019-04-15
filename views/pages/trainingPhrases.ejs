@@ -44,6 +44,8 @@
 </body>
 
 <script>
+ var data = <%- JSON.stringify(data)%>
+ console.log(data)
     var counter = 1
 
      $("#add").click(function (e) { 
@@ -60,7 +62,7 @@
     })
 
     $("#save").click(function (e) {
-        var data = <%- JSON.stringify(data)%>
+       
         
         
     //    var i, phrases = []
