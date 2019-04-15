@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    
+  
+    var counter = 1
    
     $("#add").click(function (e) { 
         counter++
