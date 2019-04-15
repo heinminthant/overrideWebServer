@@ -29,7 +29,7 @@
             
         </div>
         <a class="waves-effect waves-light btn" id="add"><i class="material-icons">add</i></a>
-        <button class="btn waves-effect waves-light" id="save" type="button" name="action">Save
+        <button class="btn waves-effect waves-light" id="save" type="button" name="action">Save<%data.phrases[0]%>
             
           </button>
 
@@ -61,7 +61,8 @@
 
     $("#save").click(function (e) {
         var data = <%- JSON.stringify(data)%>
-        console.log(data)
+        
+        
     //    var i, phrases = []
     //    for (i = 1; i <= counter; i++) {
      
