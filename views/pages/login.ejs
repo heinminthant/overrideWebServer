@@ -69,8 +69,8 @@
     $('#enter').click(function (e){
         var data = <%- JSON.stringify(data)%>
         var token = $('#token').val()
-        console.log(token)
-        //  window.location = "https://override-webserver.herokuapp.com/trainingPhrases?intentID="+data.intentID  + "&userID=" + data.userID + "&token";
+     
+         window.location = "https://override-webserver.herokuapp.com/trainingPhrases?intentID="+data.intentID  + "&userID=" + data.userID + "&token="+token;
        
     
        
