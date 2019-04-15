@@ -47,10 +47,19 @@
 </body>
 
 <script>
-       var data = <%- JSON.stringify(data)%>
-        console.log(data)
-
     var counter = 1
+
+    var data = <%- JSON.stringify(data)%>
+    var phrases = data.phrases
+
+    phrases.forEach(function(phrase){
+            $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" id = "field' + counter + '"placeholder="Add Training Phrase" class="validate"> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
+            counter++;
+
+    })
+
+
+
 
      $("#add").click(function (e) { 
        
