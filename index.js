@@ -75,6 +75,7 @@ app.get('/viberGuide',(req,res)=>{
 app.get('/trainingPhrases',(req,res)=>{
     if(req.session.token === undefined){
         req.session.token = req.query.token
+        console.log(req.query.token)
     }
     
     
