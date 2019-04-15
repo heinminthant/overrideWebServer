@@ -51,7 +51,7 @@ app.get('/trainingPhrases',(req,res)=>{
 })
 
 app.post('/storePhrases',(req,res)=>{
-    console.log(req.body)
+    console.log(req)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
