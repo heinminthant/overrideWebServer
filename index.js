@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/gg',(req,res) => {
-    req.session.id
+    console.log(req.session.id)
 });
 
 
