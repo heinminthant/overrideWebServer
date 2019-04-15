@@ -49,7 +49,7 @@
                         <br />
                         <center>
                           <div class='row'>
-                            <button type='button' name='btn_login' class='col s12 btn btn-large waves-effect indigo' id="enter">Login</button>
+                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' id="enter">Login</button>
                           </div>
                         </center>
                       </form>
@@ -72,7 +72,7 @@
         var userID = <%= user_id %>
         
         // var intentID = <%= intentID %>
-        console.log(userID)
+        
         // console.log(intentID)
         $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+userID,function(data,status){
             
