@@ -73,10 +73,13 @@ app.get('/viberGuide',(req,res)=>{
 app.get('/trainingPhrases',(req,res)=>{
     var userID = req.query.userID
     var intentID = req.query.intentID
-    console.log(userID)
-    db.getDocument(userID).then(function(result){
-       
-    })
+    
+    async function getDocument(userID){
+        var doc = await db.getDocument(userID)
+        console.log(doc)
+    }
+    getDocument(userID)
+    
 
     req.session.user = 1
     
