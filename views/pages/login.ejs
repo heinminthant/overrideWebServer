@@ -67,9 +67,10 @@
 </body>
 <script>
     $('#enter').click(function (e){
-        console.log("Hey")
+        
         var userID = <%= user_id %>
-        console.log(userID)
+        var intentID = <%= intentID %>  
+        $.get("https://override-webserver.herokuapp.com/trainingPhrases?intentID"+intentID +"&user_id="+user_id)
     })
 
 </script>
