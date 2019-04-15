@@ -91,6 +91,9 @@ app.get('/trainingPhrases',(req,res)=>{
             if(req.session.token === undefined || req.session.token !== result.utoken){
                 res.render('pages/login',{data:data})
             }
+            else{
+                res.send('Yes')
+            }
            
         }) 
     }
