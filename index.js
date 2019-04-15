@@ -113,10 +113,9 @@ app.get('/trainingPhrases',(req,res)=>{
                     }
                   }
 
-                  dflow.getIntent(projectID,data.intentID,config).then(function(result{
+                  dflow.getIntent(projectID,data.intentID,config).then(function(result){
                       console.log(result)
-                  }))
-
+                  })
                     
                 })
                 
