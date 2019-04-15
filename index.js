@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 
 const PORT = process.env.PORT || 5000;
+const db = require('./dbNew');
 
 //Web Server Init
 
@@ -71,9 +72,10 @@ app.get('/viberGuide',(req,res)=>{
 
 app.get('/trainingPhrases',(req,res)=>{
     // console.log(req.query)
-    console.log(req.session.user)
+    console.log(req.query)
     req.session.user = 1
-    console.log(req.session.user)
+    
+   
     // console.log(req.query)
     res.render('pages/index')
 })
