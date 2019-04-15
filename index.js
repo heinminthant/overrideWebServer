@@ -73,11 +73,18 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    var user_id = parseInt(req.query.userID)
+    if(req.query.userID === undefined || req.query.intentID === undefined){
+        res.render('/pages/')
+    }
+    else{
+        var user_id = parseInt(req.query.userID)
 
-    db.getDocument(user_id).then(function(result){
-        console.log(result.utoken)
-    })
+
+        db.getDocument(user_id).then(function(result){
+            console.log(result.utoken)
+        })
+    }
+    
 })
 
 app.post('/storePhrases',(req,res)=>{
