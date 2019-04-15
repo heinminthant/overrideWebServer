@@ -75,7 +75,7 @@ app.get('/trainingPhrases',(req,res)=>{
     var intentID = req.query.intentID
     console.log(userID)
     db.getDocument(userID).then(function(result){
-        console.log(result.utoken)
+       
     })
 
     req.session.user = 1
