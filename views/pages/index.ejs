@@ -44,10 +44,7 @@
 </body>
 
 <script>
-    $(document).ready(function () {
-    
-   
-    $("#add").click(function (e) { 
+     $("#add").click(function (e) { 
         counter++
         e.preventDefault()
         $("#phrases").append('<div class="row" id="phrase' + counter + '"><input class="input-field col s12" type="text" id = "field' + counter + '"placeholder="Add Training Phrase" class="validate"> <a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div>');
@@ -79,8 +76,5 @@
    
     })
     
-});
-
-
 </script>
 </html>
