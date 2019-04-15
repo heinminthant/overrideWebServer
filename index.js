@@ -76,11 +76,12 @@ app.get('/trainingPhrases',(req,res)=>{
     req.session.token = req.query.token
     
     console.log(req.query.userID)
-    console.log(req.query.intentID)
+    // console.log(req.query.intentID)
 
 
     if(req.query.userID === undefined || req.query.intentID === undefined){
-        res.redirect('www.google.com')
+        res.redirect('www.googe.com')
+        console.log("no")
     }
     else{
         var user_id = parseInt(req.query.userID)
