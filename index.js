@@ -84,11 +84,11 @@ app.get('/trainingPhrases',(req,res)=>{
         console.log("no")
     }
     else{
-        var user_id = parseInt(req.query.userID)
-        console.log(user_id)
+        var userID = parseInt(req.query.userID)
+       
         db.getDocument(user_id).then(function(result){
             if(req.session.token === undefined || req.session.token !== result.utoken){
-                res.render('pages/login',{user_id:user_id,intentID:req.query.intentID})
+                res.render('pages/login',{userID:userID,intentID:req.query.intentID})
             }
            
         }) 
