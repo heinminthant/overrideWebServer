@@ -95,6 +95,7 @@ app.get('/trainingPhrases',(req,res)=>{
         db.getDocument(user_id).then(function(result){
             if(req.session.token === undefined || req.session.token !== result.utoken){
                 res.render('pages/login',{data:data})
+                console.log("Ho HO HAHAHAHAHAHAHA")
             }
             else{
                 res.render('pages/trainingPhrases',{data:data})
