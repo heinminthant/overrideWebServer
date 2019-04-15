@@ -58,7 +58,7 @@ module.exports = {
         const intentsClient = new dialogflow.IntentsClient(config,projectID)
         const intentPath = intentsClient.intentPath(projectID,intentID)
         
-        // console.log(intentPath)
+        console.log(intentPath)
 
         const request = {name: intentPath,
           intentView: 'INTENT_VIEW_FULL'};

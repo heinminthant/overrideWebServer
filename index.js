@@ -138,7 +138,9 @@ app.get('/trainingPhrases',(req,res)=>{
     })
 
     app.post('/storePhrases',(req,res)=>{
-        console.log(req.body.phrases)
+        phrases.forEach(function(phrase){
+            
+        })
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
