@@ -67,13 +67,15 @@
 </body>
 <script>
     $('#enter').click(function (e){
+        var data = <%- JSON.stringify(data)%>
+        console.log(data)
     
         
-        var userID = <%- user_id %>
+        // var userID = <%- user_id %>
         
-        var intentID = <%- intentID %>
+        // var intentID = <%- intentID %>
         
-        console.log(intentID)
+        // console.log(intentID)
         // $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+userID ,function(data,status){
             
         // })
