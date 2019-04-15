@@ -68,8 +68,8 @@
 <script>
     $('#enter').click(function (e){
         console.log("Hey")
-        console.log(<%user_id %>)
-        console.log(<%intentID%>)
+        var userID = <%= user_id %>
+        console.log(userID)
     })
 
 </script>
