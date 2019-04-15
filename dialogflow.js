@@ -116,7 +116,7 @@ module.exports = {
 
 
     },
-    updateIntent: async function(projectID,config,phrase,intent,trainingPhrases){
+    updateIntent: async function(projectID,config,intent,trainingPhrases){
       const intentsClient = new dialogflow.IntentsClient(config,projectID)
       
 

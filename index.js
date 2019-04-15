@@ -139,30 +139,32 @@ app.get('/trainingPhrases',(req,res)=>{
     })
 
     app.post('/storePhrases',(req,res)=>{
-        console.log(req.body)
-        // db.getDocument(user_id).then(function(document){
+        phrases = req.body.phrases
+        user_id = req.body.userID
+        intentID = req.body.intentID
+        db.getDocument(user_id).then(function(document){
        
-        // var privateKey = document.chat_service.dialogflow.private_key;
-        // var projectID = document.chat_service.dialogflow.project_id
-        // var privateKey = crypto.decrypt(privateKey);
+        var privateKey = document.chat_service.dialogflow.private_key;
+        var projectID = document.chat_service.dialogflow.project_id
+        var privateKey = crypto.decrypt(privateKey);
           
-        //   let config = {
-        //     credentials: {
-        //       private_key: privateKey,
-        //       client_email: document.chat_service.dialogflow.client_email
-        //     }
-        //   }
-        // var trainingPhrases = []
-        // phrases.forEach(function(phrase){
-        //     trainingPhrases.push({
-        //         parts: [{
-        //             text:phrase
-        //         }],
-        //         type: 'EXAMPLE'
-        //     })
-        // })
-        // dflow.updateIntent(projectID,config,intentID,trainingPhrases)
-        // })
+          let config = {
+            credentials: {
+              private_key: privateKey,
+              client_email: document.chat_service.dialogflow.client_email
+            }
+          }
+        var trainingPhrases = []
+        phrases.forEach(function(phrase){
+            trainingPhrases.push({
+                parts: [{
+                    text:phrase
+                }],
+                type: 'EXAMPLE'
+            })
+        })
+        dflow.updateIntent(projectID,config,intentID,trainingPhrases)
+        })
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
