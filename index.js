@@ -1,6 +1,9 @@
 const express = require ('express');
 const app = express();
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 
 
 const PORT = process.env.PORT || 5000;
@@ -10,6 +13,10 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
+
+app.use(cookieParser());
+app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
+
 
 
 app.set('view engine', 'ejs');
@@ -21,6 +28,18 @@ app.set('view engine', 'ejs');
 app.get('/',(req,res)=>{
     res.send('<h1>Testing</h1>');
 });
+
+app.get('/gg',(req,res) => {
+    if(req.session.page_views){
+        req.session.page_views++;
+        res.send("You visited this page " + req.session.page_views + " times");
+     } else {
+        req.session.page_views = 1;
+        res.send("Welcome to this page for the first time!");
+     }
+});
+
+
 
 app.get('/stuff',(req,res)=>{
     res.send(req.body)
@@ -52,7 +71,7 @@ app.get('/viberGuide',(req,res)=>{
 
 app.get('/trainingPhrases',(req,res)=>{
     // console.log(req.query)
-    console.log(req)
+    console.log(req.query)
     res.render('pages/index')
 })
 
