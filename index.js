@@ -138,6 +138,7 @@ app.get('/trainingPhrases',(req,res)=>{
     })
 
     app.post('/storePhrases',(req,res)=>{
+        db.getDocument(user_id).then(function(document){
         var intentID = req.query.intentID
         var privateKey = document.chat_service.dialogflow.private_key;
         var projectID = document.chat_service.dialogflow.project_id
@@ -159,6 +160,7 @@ app.get('/trainingPhrases',(req,res)=>{
             })
         })
         dflow.updateIntent(projectID,config,intentID,trainingPhrases)
+        })
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
