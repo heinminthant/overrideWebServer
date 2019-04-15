@@ -71,10 +71,10 @@
         
         var userID = <%= user_id %>
         
-        // var intentID = <%= intentID %>
+        var intentID = <%= intentID %>
         
         // console.log(intentID)
-        $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+userID,function(data,status){
+        $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+userID +"&intentID="+intentID,function(data,status){
             
         })
     })
