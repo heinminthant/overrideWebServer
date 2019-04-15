@@ -16,11 +16,19 @@ $(document).ready(function () {
     $("#save").click(function (e) {
        var i, phrases = []
        for (i = 1; i <= counter; i++) {
-           console.log(i) 
+     
         phrases.push($("#field"+i).val())
       }
-      console.log(phrases)
-        
+      $.ajax({
+          type: "POST",
+          url: "https://override-webserver.herokuapp.com/storePhrases",
+          data: phrases,
+          dataType: "text",
+          success: function (response) {
+              
+          }
+      });
+   
     })
     
 });

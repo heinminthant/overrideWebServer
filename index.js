@@ -50,4 +50,8 @@ app.get('/trainingPhrases',(req,res)=>{
     res.sendfile(__dirname + '/public/trainingPhrases.html')
 })
 
+app.post('/storePhrases',(req,res)=>{
+    console.log(req.body)
+})
+
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
