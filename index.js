@@ -76,7 +76,8 @@ app.get('/trainingPhrases',(req,res)=>{
     req.session.token = req.query.token
     
     console.log(req.query.userID)
-    
+    console.log(req.query.intentID)
+
 
     if(req.query.userID === undefined || req.query.intentID === undefined){
         res.send('Bad Bitch')
