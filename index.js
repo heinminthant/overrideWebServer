@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 5000;
 const db = require('./dbNew');
+const dflow = require('./dialogflow')
 
 //Web Server Init
 
@@ -73,6 +74,9 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
+
+    
+
     console.log(req.query.token)
     if(req.session.token === undefined){
         req.session.token = req.query.token
@@ -83,7 +87,7 @@ app.get('/trainingPhrases',(req,res)=>{
     
 
     if(req.query.userID === undefined || req.query.intentID === undefined){
-        res.send('NO')
+        res.send('Invalid URL Parameters. Use Telegram bot to open this page.')
     }
     else{
         var user_id = parseInt(req.query.userID)
@@ -95,11 +99,11 @@ app.get('/trainingPhrases',(req,res)=>{
         db.getDocument(user_id).then(function(result){
             if(req.session.token === undefined || req.session.token !== result.utoken){
                 res.render('pages/login',{data:data})
-                console.log("Ho HO HAHAHAHAHAHAHA")
             }
             else{
-                res.render('pages/trainingPhrases',{data:data})
-                console.log("Hello Yay Yay")
+                var document = db.getDocument(user_id)
+                console.log(document)
+                // res.render('pages/trainingPhrases',{data:data})
             }
            
         }) 
