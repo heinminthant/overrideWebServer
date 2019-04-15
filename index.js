@@ -74,13 +74,14 @@ app.get('/viberGuide',(req,res)=>{
 
 app.get('/trainingPhrases',(req,res)=>{
     if(req.query.userID === undefined || req.query.intentID === undefined){
-        res.render('pages/wrongURL')
+        res.send('Bad Bitch')
     }
     else{
         var user_id = parseInt(req.query.userID)
-
-
         db.getDocument(user_id).then(function(result){
+            if(req.session.token === undefined || req.session.token !== result.utoken){
+                res.send('Bad Bitch')
+            }
             console.log(result.utoken)
         })
     }
