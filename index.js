@@ -98,6 +98,7 @@ app.get('/trainingPhrases',(req,res)=>{
             }
             else{
                 res.render('pages/trainingPhrases',{data:data})
+                console.log("Hello Yay Yay")
             }
            
         }) 
