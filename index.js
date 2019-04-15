@@ -3,6 +3,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://admin:admin123@override-nekvr.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
 
 
 
@@ -71,21 +75,13 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    var userID = req.query.userID
-    var intentID = req.query.intentID
-    
-    async function getDocument(userID){
-        var doc = await db.getDocument(userID)
-        console.log(doc)
-    }
-    getDocument(userID)
-    
-
-    req.session.user = 1
-    
-   
-    // console.log(req.query)
-    res.render('pages/trainingPhrases')
+    var user_id = req.query.userID
+    client.connect(err => {
+        const collection = client.db("over_ride").collection("users");
+        collection.findOne(user_id).then(function(result){
+            console.log(result)
+        })
+    })
 })
 
 app.post('/storePhrases',(req,res)=>{
