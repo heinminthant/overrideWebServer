@@ -80,8 +80,7 @@ app.get('/trainingPhrases',(req,res)=>{
 
 
     if(req.query.userID === undefined || req.query.intentID === undefined){
-        res.redirect('www.googe.com')
-        console.log("no")
+        res.send('NO')
     }
     else{
         var user_id = parseInt(req.query.userID)

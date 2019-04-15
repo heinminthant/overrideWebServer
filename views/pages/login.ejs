@@ -68,10 +68,10 @@
 <script>
     $('#enter').click(function (e){
         var data = <%- JSON.stringify(data)%>
-        console.log(data)
+       
     
        
-        $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+data.userID+"&intentID="+data.intentID ,function(data,status){
+        $.get("https://override-webserver.herokuapp.com/trainingPhrases?userIDs="+data.userID+"&intentID="+data.intentID ,function(data,status){
             
         })
     })
