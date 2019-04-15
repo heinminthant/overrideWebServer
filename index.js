@@ -73,7 +73,10 @@ app.get('/viberGuide',(req,res)=>{
 })
 
 app.get('/trainingPhrases',(req,res)=>{
-    req.session.token = req.query.token
+    if(req.session.token === undefined){
+        req.session.token = req.query.token
+    }
+    
     
     
 
@@ -92,7 +95,7 @@ app.get('/trainingPhrases',(req,res)=>{
                 res.render('pages/login',{data:data})
             }
             else{
-                res.send('Yes')
+                res.render('pages/trainingPhrases',{data:data})
             }
            
         }) 
