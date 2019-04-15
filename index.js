@@ -77,10 +77,11 @@ app.get('/viberGuide',(req,res)=>{
 app.get('/trainingPhrases',(req,res)=>{
     var user_id = req.query.userID
     client.connect(err => {
-        const collection = client.db("over_ride").collection("users");
-        collection.findOne({user_id}).then(function(result){
-            console.log(result)
-        })
+        console.log(err)
+        // const collection = client.db("over_ride").collection("users");
+        // collection.findOne({user_id}).then(function(result){
+        //     console.log(result)
+        // })
     })
 })
 
