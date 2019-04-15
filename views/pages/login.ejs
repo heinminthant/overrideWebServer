@@ -71,7 +71,9 @@
         console.log(data)
     
        
-    
+        $.get("https://override-webserver.herokuapp.com/trainingPhrases?userID="+data.userID+"&intentID="+data.intentID ,function(data,status){
+            
+        })
     })
 
 </script>
