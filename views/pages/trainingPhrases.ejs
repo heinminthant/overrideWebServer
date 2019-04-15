@@ -60,24 +60,26 @@
     })
 
     $("#save").click(function (e) {
-       var i, phrases = []
-       for (i = 1; i <= counter; i++) {
+        var data = <%- JSON.stringify(data)%>
+        console.log(data)
+    //    var i, phrases = []
+    //    for (i = 1; i <= counter; i++) {
      
-        phrases.push($("#field"+i).val())
-      }
-      data = {}
-      data.phrases = phrases
-      $.ajax({
-          type: "POST",
-          url: "https://override-webserver.herokuapp.com/storePhrases",
-          data: JSON.stringify(data),
-          contentType: 'application/json',
-          success: function (response) {
+    //     phrases.push($("#field"+i).val())
+    //   }
+    //   data = {}
+    //   data.phrases = phrases
+    //   $.ajax({
+    //       type: "POST",
+    //       url: "https://override-webserver.herokuapp.com/storePhrases",
+    //       data: JSON.stringify(data),
+    //       contentType: 'application/json',
+    //       success: function (response) {
               
-          }
-      });
+    //       }
+    //   });
    
     })
-    
+
 </script>
 </html>
