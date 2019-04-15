@@ -68,7 +68,7 @@
 <script>
     $('#enter').click(function (e){
         var data = <%- JSON.stringify(data)%>
-       console.log(window.location.hostname)
+      window.location = "https://override-webserver.herokuapp.com/trainingPhrases?intentID="+data.intentID  + "&userID=" + data.userID;
        
     
        
