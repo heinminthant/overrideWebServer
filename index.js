@@ -22,6 +22,10 @@ app.get('/stuff',(req,res)=>{
     res.send(req.body)
 })
 
+app.get('/trainingPhrases',(req,res)=>{
+    
+})
+
 // Request sent from viber
 app.post('/viber',(req,res)=>{
     res.send(req.body);
