@@ -57,6 +57,8 @@
     $(document).ready(function () {
 
             var data2 = <%- JSON.stringify(data)%>
+            console.log(data2.userID)
+            console.log(data2.intentID)
 
 
 
@@ -88,11 +90,12 @@
        
                 
             }
+            console.log(responses)
             data = {}
             data.responses = responses
             data.responses = data2.userID
             data.responses = data2.intentID
-            console.log(data.responses)
+           
             
            $.ajax({
           type: "POST",
