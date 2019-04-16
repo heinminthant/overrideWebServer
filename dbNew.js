@@ -163,10 +163,12 @@ module.exports = {
             })
         },
        getTokens: async function(){
+        return new Promise(function(resolve,reject){
            client.connect(err => {
                const collection = client.db("over_ride").collection("users");
-               return new Promise(function(resolve,reject){
+              
                 collection.find({}).toArray(function(err,result){
+                    console.log(result)
                   resolve(result)
                 })
                })
