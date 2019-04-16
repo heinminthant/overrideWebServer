@@ -159,7 +159,7 @@ module.exports = {
     
         const responses = await sessionClient.detectIntent(request);
         console.log(responses)
-        resolve(responses.intent.name)
+        console.log(responses.intent)
      
  
     }
