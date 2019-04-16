@@ -64,7 +64,8 @@ async function exec(){
            token = token.social_media.viber.access_token
            var route = '/'+token
            app.post(route,(req,res)=>{
-                res.send("Hey")
+                var token = req.originalUrl.substr(1)
+                console.log(token)
            })
        })
     })
@@ -73,7 +74,7 @@ async function exec(){
 app.get('/viberRoutes',(req,res)=>{
 
     exec()
-    console.log(req.originalUrl)
+ 
 
 
     res.send("Hello")
