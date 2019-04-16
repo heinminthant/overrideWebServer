@@ -83,11 +83,11 @@ async function exec(){
                           client_email: document.chat_service.dialogflow.client_email
                         }
                       }
-                    //   console.log(projectID)
-                    //   console.log(req.body.text)
-                    //   dflow.detectIntent(projectID,config,'Hey').then(function(result){
-                    //       console.log(result)
-                    //   })
+                      console.log(projectID)
+                   
+                      dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
+                          console.log(result)
+                      })
 
                    
                 })
