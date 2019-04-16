@@ -62,12 +62,12 @@ function exec(){
     db.getTokens().then(function(result){
         console.log(result)
     })
-    num.forEach(function(n){
-        var j = '/'+n
-        app.post(j,(req,res)=>{
-            console.log("hey")
-        })
-    })
+    // num.forEach(function(n){
+    //     var j = '/'+n
+    //     app.post(j,(req,res)=>{
+    //         console.log("hey")
+    //     })
+    // })
 }
 app.get('/viberRoutes',(req,res)=>{
 
