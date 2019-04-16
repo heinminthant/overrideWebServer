@@ -83,7 +83,7 @@ async function exec(){
                           client_email: document.chat_service.dialogflow.client_email
                         }
                       }
-                      console.log(projectID)
+                      
                       async function getName(){
                        var result = await dflow.detectIntent(projectID,config,req.body.message.text)
                        console.log(result)
