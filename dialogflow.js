@@ -156,8 +156,11 @@ module.exports = {
         },
       };
       // Send request and log result
-  const responses = await sessionClient.detectIntent(request);
-  resolve(responses.name)
+      return new Promise(function(resolve,reject){
+        const responses = await sessionClient.detectIntent(request);
+        resolve(responses.name)
+      })
+ 
     }
 
 
