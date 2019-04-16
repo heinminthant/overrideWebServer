@@ -68,7 +68,9 @@ function exec(){
     })
 }
 app.get('HH',(req,res)=>{
+
     exec()
+    res.send("Hello")
 })
 
 
