@@ -34,15 +34,7 @@ app.get('/',(req,res)=>{
     res.send('<h1>Testing</h1>');
 });
 
-app.get('/gg',(req,res) => {
-    if(req.session.page_views){
-        req.session.page_views++;
-        res.send("You visited this page " + req.session.page_views + " times");
-     } else {
-        req.session.page_views = 1;
-        res.send("Welcome to this page for the first time!");
-     }
-});
+
 
 
 
@@ -207,7 +199,10 @@ app.get('/trainingPhrases',(req,res)=>{
 })
 
 app.post('/storeResponses',(req,res)=>{
-    console.log(req.body)
+    var user_id = req.query.userID
+    var intentID = req.query.intentID
+    var responses = req.body.data.responses
+    console.log(user_id + "   " + intentID + "    " + responses)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
