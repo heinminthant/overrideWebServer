@@ -93,7 +93,7 @@
            $.ajax({
           type: "POST",
           url: "https://override-webserver.herokuapp.com/storeResponses",
-          data: JSON.stringify(data2),
+          data: JSON.stringify(data),
           contentType: 'application/json',
           success: function (response) {
                 M.toast({html: 'Training phrases are saved!'})
