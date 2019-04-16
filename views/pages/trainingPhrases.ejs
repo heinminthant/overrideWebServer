@@ -88,24 +88,24 @@
        var i, phrases = []
        for (i = 0; i < count; i++) {
         var num = phraseArray[i].id.substr(6)
-        console.log(num)
-        // phrases.push($("#field"+i).val())
+       
+        phrases.push($("#field"+num).val())
       }
-    //   data2 = {}
-    //   data2.phrases = phrases
-    //   data2.userID = data.userID
-    //   data2.intentID = data.intentID
-    //   $.ajax({
-    //       type: "POST",
-    //       url: "https://override-webserver.herokuapp.com/storePhrases",
-    //       data: JSON.stringify(data2),
-    //       contentType: 'application/json',
-    //       success: function (response) {
-    //             M.toast({html: 'Training phrases are saved!'})
-    //             console.log(response)
+      data2 = {}
+      data2.phrases = phrases
+      data2.userID = data.userID
+      data2.intentID = data.intentID
+      $.ajax({
+          type: "POST",
+          url: "https://override-webserver.herokuapp.com/storePhrases",
+          data: JSON.stringify(data2),
+          contentType: 'application/json',
+          success: function (response) {
+                M.toast({html: 'Training phrases are saved!'})
+                console.log(response)
 
-    //       }
-    //   });
+          }
+      });
    
     })
 
