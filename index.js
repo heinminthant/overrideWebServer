@@ -199,12 +199,14 @@ app.get('/trainingPhrases',(req,res)=>{
 })
 
 app.post('/storeResponses',(req,res)=>{
-    var userID = req.body.data.userID
-    var intentID = req.body.data.intentID
-    var responses = req.body.data.responses
-    console.log(intentID)
-    console.log(userID)
-   console.log(req.body.responses)
+    console.log(req.body)
+    console.log(req.body.data)
+//     var userID = req.body.data.userID
+//     var intentID = req.body.data.intentID
+//     var responses = req.body.data.responses
+//     console.log(intentID)
+//     console.log(userID)
+//    console.log(req.body.responses)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
