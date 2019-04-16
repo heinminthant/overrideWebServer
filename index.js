@@ -162,35 +162,8 @@ app.get('/trainingPhrases',(req,res)=>{
                     res.render('pages/login',{data:data})
                 }
                 else{
-                    db.getDocument(user_id).then(function(document){
-                        var privateKey = document.chat_service.dialogflow.private_key;
-                        var projectID = document.chat_service.dialogflow.project_id
-                        var privateKey = crypto.decrypt(privateKey);
-                          
-                          let config = {
-                            credentials: {
-                              private_key: privateKey,
-                              client_email: document.chat_service.dialogflow.client_email
-                            }
-                          }
-                      var phrases = []
-                      dflow.getIntent(projectID,data.intentID,config).then(function(result){
-                          var trainingPhrases = result.trainingPhrases
-                          trainingPhrases.forEach(function(phrase){
-                            
-                           phrases.push(phrase.parts[0].text)
-                            
-                          })
-                        var data = {'phrases' : phrases,
-                        'userID' : user_id, 'intentID' : req.query.intentID}
-                        res.render('pages/trainingPhrases',{data:data})
-    
-                          
-                      })
-                        
-                    })
-                    
-                    // res.render('pages/trainingPhrases',{data:data})
+                    res.render('pages/responses',{data:data})
+                   
                 }
                
             }) 
