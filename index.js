@@ -63,6 +63,7 @@ async function exec(){
     db.getTokens().then(function(result){
        result.forEach(function(token){
            token = token.social_media.viber.access_token
+           console.log(token)
            
            var route = '/'+token
        
