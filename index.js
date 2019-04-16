@@ -59,15 +59,32 @@ app.post('/viber',(req,res)=>{
 });
 
 async function exec(){
+    
     db.getTokens().then(function(result){
        result.forEach(function(token){
            token = token.social_media.viber.access_token
            
            var route = '/'+token
            app.post(route,(req,res)=>{
+                
                 var token = req.originalUrl.substr(1)
-                db.getUserIDToken(token).then(function(result){
-                    console.log(result)
+                db.getUserIDToken(token).then(function(document){
+                    var privateKey = document.chat_service.dialogflow.private_key;
+                    var projectID = document.chat_service.dialogflow.project_id
+                    var privateKey = crypto.decrypt(privateKey);
+                      
+                      let config = {
+                        credentials: {
+                          private_key: privateKey,
+                          client_email: document.chat_service.dialogflow.client_email
+                        }
+                      }
+
+                      dflow.detectIntent(projectID,config,req.body.text).then(function(result){
+                          console.log(result)
+                      })
+
+                   
                 })
                
                 res.send("OK")
