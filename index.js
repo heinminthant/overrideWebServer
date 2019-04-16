@@ -84,10 +84,12 @@ async function exec(){
                         }
                       }
                       console.log(projectID)
-                   
-                      dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
-                          console.log(result)
-                      })
+                      async function getName(){
+                       var result = await dflow.detectIntent(projectID,config,req.body.message.text)
+                       console.log(result)
+                      }
+                      getName()
+                      
 
                    
                 })
