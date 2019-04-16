@@ -158,7 +158,7 @@ module.exports = {
       // Send request and log result
       return new Promise(async function(resolve,reject){
         const responses = await sessionClient.detectIntent(request);
-        console.log(responses.intent.name)
+        console.log(responses)
         resolve(responses.intent.name)
       })
  
