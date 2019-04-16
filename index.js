@@ -66,7 +66,8 @@ app.post('/viber',(req,res)=>{
 });
 
 app.post('/ggmanlay',(req,res)=>{
-    
+    res.send("OK")
+
 })
 
 app.get('/dflowGuide',(req,res)=>{
