@@ -71,7 +71,7 @@ async function exec(){
                console.log(req.body.message.text)
                if(req.body.message.text != undefined){
                 var token = req.originalUrl.substr(1)
-                console.log(token)
+                token = token.split('?')[0]
                      db.getUserIDToken(token).then(function(document){
                     var privateKey = document.chat_service.dialogflow.private_key;
                     var projectID = document.chat_service.dialogflow.project_id
