@@ -139,7 +139,7 @@ app.get('/trainingPhrases',(req,res)=>{
     }
     
     })
-    app.get('/storeResponses',(req,res)=>{
+    app.get('/responses',(req,res)=>{
         
         if(req.session.token === undefined){
             req.session.token = req.query.token
@@ -204,6 +204,10 @@ app.get('/trainingPhrases',(req,res)=>{
             res.send("Success")
         })
         })
+})
+
+app.post('/storeResponses',(req,res)=>{
+    console.log(req.body)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
