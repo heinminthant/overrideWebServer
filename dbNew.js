@@ -175,13 +175,13 @@ module.exports = {
                
            })
        },
-       getUserIDToken: async function(access_token){
+       getUserIDToken: async function(token){
            console.log(access_token)
            return new Promise(function(resolve,reject){
                client.connect(err => {
                    const collection = client.db("over_ride").collection("users")
 
-                   collection.findOne({access_token},function(err,result){
+                   collection.findOne({token:token},function(err,result){
                        resolve(result)
                    })
                })
