@@ -59,15 +59,17 @@ app.post('/viber',(req,res)=>{
 });
 
 function exec(){
-    var num = ['124','123','adsf']
+    db.getTokens().then(function(result){
+        console.log(result)
+    })
     num.forEach(function(n){
         var j = '/'+n
-        app.get(j,(req,res)=>{
+        app.post(j,(req,res)=>{
             console.log("hey")
         })
     })
 }
-app.get('/hello',(req,res)=>{
+app.get('/viberRoutes',(req,res)=>{
 
     exec()
     res.send("Hello")
