@@ -58,9 +58,12 @@ app.post('/viber',(req,res)=>{
   
 });
 
-var num = "/gg123"
-app.get(num,(req,res)=>{
-    res.send('hello')
+var num = ['124','123','adsf']
+num.forEach(function(n){
+    var j = '/'+n
+    app.get(j,(req,res)=>{
+        console.log("hey")
+    })
 })
 
 
