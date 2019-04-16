@@ -47,6 +47,7 @@ app.get('/stuff',(req,res)=>{
 // Request sent from viber
 app.post('/viber',(req,res)=>{
    console.log(req.body)
+   res.send("Hello")
    
     // if(req.body.message != undefined){
     //    //  console.log("It is undefined ");
