@@ -139,7 +139,62 @@ app.get('/trainingPhrases',(req,res)=>{
     })
     app.get('/responses',(req,res)=>{
         
-        res.render('pages/responses')
+        if(req.session.token === undefined){
+            req.session.token = req.query.token
+     
+        }
+        
+        
+        
+    
+        if(req.query.userID === undefined || req.query.intentID === undefined){
+            res.send('Invalid URL Parameters. Use Telegram bot to open this page.')
+        }
+        else{
+            var user_id = parseInt(req.query.userID)
+            var data ={
+                userID : user_id,
+                intentID : req.query.intentID
+            }
+       
+            db.getDocument(user_id).then(function(result){
+                if(req.session.token === undefined || req.session.token !== result.utoken){
+                    res.render('pages/login',{data:data})
+                }
+                else{
+                    db.getDocument(user_id).then(function(document){
+                        var privateKey = document.chat_service.dialogflow.private_key;
+                        var projectID = document.chat_service.dialogflow.project_id
+                        var privateKey = crypto.decrypt(privateKey);
+                          
+                          let config = {
+                            credentials: {
+                              private_key: privateKey,
+                              client_email: document.chat_service.dialogflow.client_email
+                            }
+                          }
+                      var phrases = []
+                      dflow.getIntent(projectID,data.intentID,config).then(function(result){
+                          var trainingPhrases = result.trainingPhrases
+                          trainingPhrases.forEach(function(phrase){
+                            
+                           phrases.push(phrase.parts[0].text)
+                            
+                          })
+                        var data = {'phrases' : phrases,
+                        'userID' : user_id, 'intentID' : req.query.intentID}
+                        res.render('pages/trainingPhrases',{data:data})
+    
+                          
+                      })
+                        
+                    })
+                    
+                    // res.render('pages/trainingPhrases',{data:data})
+                }
+               
+            }) 
+        }
 
     })
 
