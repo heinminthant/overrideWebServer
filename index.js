@@ -63,7 +63,9 @@ async function exec(){
        result.forEach(function(token){
            token = token.social_media.viber.access_token
            var route = '/'+token
-           console.log(route)
+           app.post(route,(req,res)=>{
+                res.send("Hey")
+           })
        })
     })
     // num.forEach(function(n){
