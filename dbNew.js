@@ -168,7 +168,7 @@ module.exports = {
                const collection = client.db("over_ride").collection("users");
               
                 collection.find({}).toArray(function(err,result){
-                    console.log(result)
+                 
                   resolve(result)
                 })
                })
