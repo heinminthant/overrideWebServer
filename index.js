@@ -165,6 +165,7 @@ app.get('/trainingPhrases',(req,res)=>{
         })
         dflow.getIntent(projectID,intentID,config).then(function(result){
             dflow.updateIntent(projectID,config,result,trainingPhrases)
+            res.send("Success")
         })
         })
 })
