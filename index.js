@@ -68,27 +68,28 @@ async function exec(){
            var route = '/'+token
        
            app.post(route,(req,res)=>{
+               console.log(req.body)
                 
-                var token = req.originalUrl.substr(1)
-                console.log(token)
-                console.log(req.body.text)
+                // var token = req.originalUrl.substr(1)
+                // console.log(token)
+                // console.log(req.body.text)
 
-                db.getUserIDToken(token).then(function(document){
-                    var privateKey = document.chat_service.dialogflow.private_key;
-                    var projectID = document.chat_service.dialogflow.project_id
-                    var privateKey = crypto.decrypt(privateKey);
+                // db.getUserIDToken(token).then(function(document){
+                //     var privateKey = document.chat_service.dialogflow.private_key;
+                //     var projectID = document.chat_service.dialogflow.project_id
+                //     var privateKey = crypto.decrypt(privateKey);
                       
-                      let config = {
-                        credentials: {
-                          private_key: privateKey,
-                          client_email: document.chat_service.dialogflow.client_email
-                        }
-                      }
-                    //   console.log(projectID)
-                    //   console.log(req.body.text)
-                      dflow.detectIntent(projectID,config,'Hey').then(function(result){
-                          console.log(result)
-                      })
+                //       let config = {
+                //         credentials: {
+                //           private_key: privateKey,
+                //           client_email: document.chat_service.dialogflow.client_email
+                //         }
+                //       }
+                //     //   console.log(projectID)
+                //     //   console.log(req.body.text)
+                //       dflow.detectIntent(projectID,config,'Hey').then(function(result){
+                //           console.log(result)
+                //       })
 
                    
                 })
