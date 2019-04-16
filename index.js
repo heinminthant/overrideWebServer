@@ -91,8 +91,7 @@ app.get('/trainingPhrases',(req,res)=>{
         var user_id = parseInt(req.query.userID)
         var data ={
             userID : user_id,
-            intentID : req.query.intentID,
-            site : "responses"
+            intentID : req.query.intentID
         }
    
         db.getDocument(user_id).then(function(result){
@@ -152,7 +151,8 @@ app.get('/trainingPhrases',(req,res)=>{
             var user_id = parseInt(req.query.userID)
             var data ={
                 userID : user_id,
-                intentID : req.query.intentID
+                intentID : req.query.intentID,
+                site : "responses"
             }
        
             db.getDocument(user_id).then(function(result){
