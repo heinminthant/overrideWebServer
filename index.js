@@ -201,7 +201,7 @@ app.get('/trainingPhrases',(req,res)=>{
 app.post('/storeResponses',(req,res)=>{
     var user_id = req.query.userID
     var intentID = req.query.intentID
-    var responses = req.body.data.responses
+    var responses = req.body
     console.log(user_id + "   " + intentID + "    " + responses)
 })
 
