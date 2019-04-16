@@ -91,17 +91,7 @@
                 responses : responses
             }
             
-            $.ajax({
-          type: "POST",
-          url: "https://override-webserver.herokuapp.com/storeResponses",
-          data: JSON.stringify(data),
-          contentType: 'application/json',
-          success: function (response) {
-                M.toast({html: 'Responses are saved!'})
-                console.log(response)
-
-          }
-      });
+           console.log(data)
            
         })
 
