@@ -143,9 +143,12 @@ module.exports = {
             })
         },
         updateResponse: function(user_id,intentID,responses){
+            console.log(user_id)
+            console.log(intentID)
             client.connect(err => {
                 const collection = client.db("over_ride").collection("responses");
                 collection.findOne({user_id,intentID},function(err,result){
+                    
                     if(result === null){
                         doc = {
                             "user_id" : user_id,

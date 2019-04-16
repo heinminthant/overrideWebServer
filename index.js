@@ -204,6 +204,7 @@ app.post('/storeResponses',(req,res)=>{
     var intentID = req.body.intentID
     var responses = req.body.responses
     db.updateResponse(userID,intentID,responses)
+    res.send('Ok')
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
