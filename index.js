@@ -58,13 +58,19 @@ app.post('/viber',(req,res)=>{
   
 });
 
-var num = ['124','123','adsf']
-num.forEach(function(n){
-    var j = '/'+n
-    app.get(j,(req,res)=>{
-        console.log("hey")
+function exec(){
+    var num = ['124','123','adsf']
+    num.forEach(function(n){
+        var j = '/'+n
+        app.get(j,(req,res)=>{
+            console.log("hey")
+        })
     })
+}
+app.get('HH',(req,res)=>{
+    exec()
 })
+
 
 
 app.post('/ggmanlay',(req,res)=>{
