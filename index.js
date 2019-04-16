@@ -138,12 +138,8 @@ app.get('/trainingPhrases',(req,res)=>{
     
     })
     app.get('/hh',(req,res)=>{
-       if(req.session.token === undefined){
-           console.log("Undefined")
-       }
-       else{
-           console.log(req.session.token)
-       }
+        res.sendFile(__dirname + '/public/trainingPhrases.html');
+
     })
 
     app.post('/storePhrases',(req,res)=>{
