@@ -202,7 +202,7 @@ app.post('/storeResponses',(req,res)=>{
 
     var intentID = req.query.intentID
     var responses = req.body
-   console.log(req.body)
+   console.log(req.body.responses)
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
