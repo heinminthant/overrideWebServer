@@ -52,7 +52,7 @@ app.post('/viber',(req,res)=>{
        //  console.log("It is undefined ");
         var messageObject = req.body.message;
         var text = messageObject.text;
-        console.log(text);
+        dflow.
     }
   
 });
