@@ -67,7 +67,7 @@ function exec(){
         })
     })
 }
-app.get('hello',(req,res)=>{
+app.get('/hello',(req,res)=>{
 
     exec()
     res.send("Hello")
