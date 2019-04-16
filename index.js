@@ -137,8 +137,9 @@ app.get('/trainingPhrases',(req,res)=>{
     }
     
     })
-    app.get('/hh',(req,res)=>{
-        res.sendFile(__dirname + '/public/trainingPhrases.html');
+    app.get('/responses',(req,res)=>{
+        
+        res.render('pages/responses')
 
     })
 
