@@ -46,14 +46,14 @@ app.get('/stuff',(req,res)=>{
 
 // Request sent from viber
 app.post('/viber',(req,res)=>{
-    res.send(req.body);
+   console.log(req.body)
    
-    if(req.body.message != undefined){
-       //  console.log("It is undefined ");
-        var messageObject = req.body.message;
-        var text = messageObject.text;
-        dflow.
-    }
+    // if(req.body.message != undefined){
+    //    //  console.log("It is undefined ");
+    //     var messageObject = req.body.message;
+    //     var text = messageObject.text;
+    //     db.getDocument()
+    // }
   
 });
 

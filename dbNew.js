@@ -161,7 +161,8 @@ module.exports = {
                     }
                 })
             })
-        }
+        },
+        getUserIDIntent: function()
         
 
        
