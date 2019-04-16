@@ -65,6 +65,10 @@ app.post('/viber',(req,res)=>{
   
 });
 
+app.post('/ggmanlay',(req,res)=>{
+    
+})
+
 app.get('/dflowGuide',(req,res)=>{
     res.sendFile(__dirname + '/public/dflowGuide.html');
 
