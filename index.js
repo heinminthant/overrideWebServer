@@ -60,7 +60,9 @@ app.post('/viber',(req,res)=>{
 
 async function exec(){
     db.getTokens().then(function(result){
-        console.log(result)
+       result.forEach(function(token){
+           console.log(token.social_media.viber.access_token)
+       })
     })
     // num.forEach(function(n){
     //     var j = '/'+n
