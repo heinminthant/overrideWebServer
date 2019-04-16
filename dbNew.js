@@ -165,8 +165,8 @@ module.exports = {
        getTokens: async function(){
            client.connect(err => {
                const collection = client.db("over_ride").collection("users");
-               collection.find({},function(err,result){
-                    console.log(result)
+               collection.find({}).toArray(function(err,result){
+                   console.log(result)
                })
            })
        }
