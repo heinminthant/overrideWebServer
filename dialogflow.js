@@ -158,8 +158,8 @@ module.exports = {
       // Send request and log result
     
         const responses = await sessionClient.detectIntent(request);
-        console.log(responses)
-        console.log(responses.intent)
+        const result = responses[0].queryResult;
+        console.log(result.intent.name)
      
  
     }
