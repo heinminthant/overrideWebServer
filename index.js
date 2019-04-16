@@ -62,13 +62,14 @@ async function exec(){
     db.getTokens().then(function(result){
        result.forEach(function(token){
            token = token.social_media.viber.access_token
+           
            var route = '/'+token
            app.post(route,(req,res)=>{
                 var token = req.originalUrl.substr(1)
-                // db.getUserIDToken(token).then(function(result){
-                //     console.log(result)
-                // })
-                console.log(token)
+                db.getUserIDToken(token).then(function(result){
+                    console.log(result)
+                })
+               
                 res.send("OK")
            })
        })
