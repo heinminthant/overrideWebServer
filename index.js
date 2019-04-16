@@ -58,10 +58,8 @@ app.post('/viber',(req,res)=>{
   
 });
 
-function exec(){
-    db.getTokens().then(function(result){
-        console.log(result)
-    })
+async function exec(){
+    var tokens = await db.getTokens()
     // num.forEach(function(n){
     //     var j = '/'+n
     //     app.post(j,(req,res)=>{
