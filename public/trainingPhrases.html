@@ -15,6 +15,14 @@
 <body>
 
 
+       
+
+<img id="blah" alt="">
+
+
+
+
+
     <ul id="dropdown" class="dropdown-content">
         <li id="image"><a href="#">Image</a></li>
         <li id="text"><a href="#" id="text">Text</a></li>
@@ -23,13 +31,15 @@
 
     </ul>
 
-    <form action="">
+
+
+    <form action="" enctype="multipart/form-data" id="responseForm">
 
 
 
         <div id="responses">
-          
-            </div>
+
+        </div>
 
 
         </div><br>
@@ -46,6 +56,10 @@
 <script>
     $(document).ready(function () {
 
+
+
+
+
         var counter = 1
         $('body').on('click', '#delete', function (e) {
             $(this).parent('div').remove()
@@ -55,13 +69,24 @@
 
         $("#submit").click(function () {
             var responses = []
+            
 
             var i, responseArray = $("#responses > div")
 
             for (i = 0; i < responseArray.length; i++) {
-                var id = responseArray[i].firstChild.id
-                $("#" + id).val()
+                
+                if(responseArray[i].id === "text"){
+                 
+                    var id = responseArray[i].firstChild.firstChild.id
+                responses.push($("#" + id).val())
+                }
+                else if(responseArray[i].id === "image"){
+                    console.log($("#file").val())
+                }
+                
             }
+            
+           
         })
 
 
@@ -70,12 +95,12 @@
             if (this.id === 'text') {
 
                 $("#responses").append(
-                    ' <div class="card"><div class="input-field col s10"><textarea required placeholder = "Enter Text" id="textarea' +
+                    ' <div id="text" class="card"><div class="input-field col s10"><textarea required placeholder = "Enter Text" id="textarea' +
                     counter +
                     '"class="materialize-textarea"></textarea><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div</div>'
                 )
 
-               
+
             } else if (this.id === 'video') {
                 $("#responses").append("<p>Video</p>")
 
@@ -83,11 +108,30 @@
                 $("#responses").append("<p>Carousel</p>")
 
             } else if (this.id === 'image') {
-                $("#responses").append('<div class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input id="image'+ counter +'" type="file"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row"><div class="input-field col s12"><input placeholder="Title" id="first_name" type="text"></div></div><div class="row"><div class="input-field col s12"><input placeholder="Subtitle" id="first_name" type="text"></div></div></div><div class="card-action"><div class="row"><div class="input-field col s12"><input placeholder="Button Name" id="first_name" type="text"></div></div></div></div></div></div>')
+                $("#responses").append('<div id = "image" class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input type="file" id="image' + counter +'"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row"><div class="input-field col s12"><input placeholder="Title" id="first_name" type="text"></div></div><div class="row"><div class="input-field col s12"><input placeholder="Subtitle" id="first_name" type="text"></div></div></div><div class="card-action"><div class="row"><div class="input-field col s12"><input placeholder="Button Name" id="first_name" type="text"></div></div></div><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div></div></div>')
 
             }
             counter++
 
         })
+
+        function readURL(input) {    
+  if (input.files && input.files[0]) {   
+    var reader = new FileReader();
+    var filename = $("#file").val();
+    filename = filename.substring(filename.lastIndexOf('\\')+1);
+    reader.onloadend =  function(e) {
+     
+      $('#blah').attr('src', e.target.result);
+              
+    }
+    reader.readAsDataURL(input.files[0]);    
+  } 
+  $(".alert").removeClass("loading").hide();
+}
+$("#file").change(function () {
+            readURL(this);
+        });
+
     });
 </script>
