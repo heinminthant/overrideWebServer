@@ -69,7 +69,7 @@ async function exec(){
            app.post(route,(req,res)=>{
                 
                 var token = req.originalUrl.substr(1)
-                console.log(token)
+               
                 db.getUserIDToken(token).then(function(document){
                     var privateKey = document.chat_service.dialogflow.private_key;
                     var projectID = document.chat_service.dialogflow.project_id
