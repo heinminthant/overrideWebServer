@@ -59,7 +59,7 @@ app.post('/viber',(req,res)=>{
 });
 
 var num = "/gg123"
-app.post(num,(req,res)=>{
+app.get(num,(req,res)=>{
     res.send('hello')
 })
 
