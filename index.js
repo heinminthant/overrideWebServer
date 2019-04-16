@@ -69,9 +69,10 @@ async function exec(){
        
            app.post(route,(req,res)=>{
                console.log(req.body.message.text)
-            //    if(req.body.message.text != undefined){
-            //     var token = req.originalUrl.substr(1)
-            //     console.log(token)
+               if(req.body.message.text != undefined){
+                var token = req.originalUrl.substr(1)
+                console.log(token)
+               }
             //     console.log(req.body.text)
 
             //     db.getUserIDToken(token).then(function(document){
