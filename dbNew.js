@@ -11,7 +11,7 @@ module.exports = {
         client.connect(err => {
             const collection = client.db("over_ride").collection("users");
 
-            collection.insertOne(doc);
+            collection.insertOne(doc)
            
            
             
@@ -148,12 +148,14 @@ module.exports = {
                 collection.findOne({user_id,intentID},function(err,result){
                     if(result === null){
                         doc = {
-                            user_id : user_id,
-                            intentID : intentID,
-                            responses : responses
+                            "user_id" : user_id,
+                            "intentID" : intentID,
+                            "responses" : responses
                         }
 
-                        collection.insertOne(doc)
+                        collection.insertOne(doc).then(function(result){
+                            console.log(result)
+                        })
                     }
                 })
             })
