@@ -83,9 +83,6 @@ app.get('/trainingPhrases',(req,res)=>{
         req.session.token = req.query.token
  
     }
-    
-    
-    
 
     if(req.query.userID === undefined || req.query.intentID === undefined){
         res.send('Invalid URL Parameters. Use Telegram bot to open this page.')
@@ -94,7 +91,8 @@ app.get('/trainingPhrases',(req,res)=>{
         var user_id = parseInt(req.query.userID)
         var data ={
             userID : user_id,
-            intentID : req.query.intentID
+            intentID : req.query.intentID,
+            site : "responses"
         }
    
         db.getDocument(user_id).then(function(result){
