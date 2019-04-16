@@ -137,6 +137,9 @@ app.get('/trainingPhrases',(req,res)=>{
     }
     
     })
+    app.get('/hh',(req,res)=>{
+       console.log(res.session.token)
+    })
 
     app.post('/storePhrases',(req,res)=>{
         var phrases = req.body.phrases
