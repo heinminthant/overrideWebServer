@@ -65,9 +65,10 @@ async function exec(){
            var route = '/'+token
            app.post(route,(req,res)=>{
                 var token = req.originalUrl.substr(1)
-                db.getUserIDToken(token).then(function(result){
-                    console.log(result)
-                })
+                // db.getUserIDToken(token).then(function(result){
+                //     console.log(result)
+                // })
+                console.log(token)
                 res.send("OK")
            })
        })
