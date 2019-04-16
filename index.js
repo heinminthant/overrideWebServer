@@ -65,8 +65,9 @@ async function exec(){
            token = token.social_media.viber.access_token
            
            var route = '/'+token
+       
            app.post(route,(req,res)=>{
-                
+                console.log(token)
                 var token = req.originalUrl.substr(1)
                 db.getUserIDToken(token).then(function(document){
                     var privateKey = document.chat_service.dialogflow.private_key;
