@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 const db = require('./dbNew');
 const dflow = require('./dialogflow')
 const crypto = require('./crypto')
+const viber = require('./viber')
 
 //Web Server Init
 
@@ -69,7 +70,7 @@ async function exec(){
            var route = '/'+token
        
            app.post(route,(req,res)=>{
-               console.log(req.body.message.text)
+               
                if(req.body.message.text != undefined){
                 var token = req.originalUrl.substr(1)
                 token = token.split('?')[0]
@@ -85,11 +86,17 @@ async function exec(){
                         }
                       }
                       
+                      var vtoken = crypto.decrypt(token)
                       
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
                            var intentID = result.intent.name.split('/')[4]
                            db.getResponses(intentID,document.user_id).then(function(result){
-                               console.log(result)
+                               var responses = result.responses
+                               responses.forEach(function(response){
+                                   if(response.type === 'text'){
+                                        viber.sendMessage(req.body.sender.id,req.body.message.text,vtoken)
+                                   }
+                               })
                            })
                        })
                        
