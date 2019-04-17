@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const formidable = require('formidable')
+
 
 
 
@@ -346,8 +348,19 @@ app.post('/storePhrases', (req, res) => {
 })
 
 app.post('/storeResponses', (req, res) => {
-    console.log(req.body.data)
-
+    app.post('/submit-form', (req, res) => {
+        new formidable.IncomingForm().parse(req, (err, fields, files) => {
+          if (err) {
+            console.error('Error', err)
+            throw err
+          }
+          console.log('Fields', fields)
+          console.log('Files', files)
+          files.map(file => {
+            console.log(file)
+          })
+        })
+      })
     // var userID = req.body.userID
     // var intentID = req.body.intentID
     // var responses = req.body.responses
