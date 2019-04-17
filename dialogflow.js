@@ -141,7 +141,7 @@ module.exports = {
       })
     },
     detectIntent: async function(projectID,config,text){
-      return new Promise(function(resolve,reject){
+      
 
      
       const sessionId = uuid.v4()
@@ -161,6 +161,7 @@ module.exports = {
       // Send request and log result
     
         const responses = await sessionClient.detectIntent(request);
+        return new Promise(async function(resolve,reject){
         const result = responses[0].queryResult;
         resolve(result)
      
