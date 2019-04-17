@@ -85,6 +85,7 @@ async function exec(){
                           client_email: document.chat_service.dialogflow.client_email
                         }
                       }
+                      console.log(token)
                       
                       var vtoken = crypto.decrypt(token)
                       
