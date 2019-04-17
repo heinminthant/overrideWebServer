@@ -188,14 +188,19 @@ module.exports = {
            })
        },
        getResponses: async function(intentID,user_id){
+        return new Promise(function(resolve,reject){
+
+       
         client.connect(err => {
             const collection = client.db("over_ride").collection("responses")
 
             collection.findOne({user_id,intentID},function(err,result){
-                console.log(result)
+                var responses = result.responses
+                
             })
+            resolve(responses)
         })
-
+    })
        }
 
        
