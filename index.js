@@ -348,25 +348,12 @@ app.post('/storePhrases', (req, res) => {
 })
 
 app.post('/storeResponses', (req, res) => {
-    app.post('/submit-form', (req, res) => {
-        new formidable.IncomingForm().parse(req, (err, fields, files) => {
-          if (err) {
-            console.error('Error', err)
-            throw err
-          }
-          console.log('Fields', fields)
-          console.log('Files', files)
-          files.map(file => {
-            console.log(file)
-          })
-        })
-      })
-    // var userID = req.body.userID
-    // var intentID = req.body.intentID
-    // var responses = req.body.responses
-    // console.log(userID)
-    // console.log(intentID)
-    // console.log(responses)
+   
+    var userID = req.body.userID
+    var intentID = req.body.intentID
+    var responses = req.body.responses
+    
+    console.log(responses)
     // db.updateResponse(userID, intentID, responses)
     res.send('Ok')
 })
