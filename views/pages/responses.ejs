@@ -74,7 +74,7 @@
 
         $("#submit").click(function () {
             var responses = []
-            console.log("Hello")
+            console.log(responseArray[i].id)
             
 
             var i, responseArray = $("#responses > div")
@@ -92,7 +92,7 @@
                 }
                 else if(responseArray[i].id === "image"){
                      var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                   
+                    console.log("HEY")
                     var file = $('#'+fileID)[0].files[0]
                     var formData = new FormData()
                     formData.append('file',file)
