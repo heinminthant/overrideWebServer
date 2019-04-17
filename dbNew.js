@@ -194,11 +194,12 @@ module.exports = {
         client.connect(err => {
             const collection = client.db("over_ride").collection("responses")
 
-            collection.findOne({user_id,intentID},function(err,result){
+            collection.findOne({user_id,intentID},async function(err,result){
                 var responses = result.responses
+                resolve(responses)
                 
             })
-            resolve(responses)
+            
         })
     })
        }
