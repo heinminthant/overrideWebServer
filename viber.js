@@ -3,9 +3,7 @@ var request = require('request');
 
 module.exports = {
     sendMessage: function(receiver,text,token){
-        console.log(receiver)
-        console.log(text)
-        console.log(token)
+      
         var req = {
             "receiver":receiver,
             "min_api_version":1,
@@ -60,6 +58,6 @@ module.exports = {
                 });
 
     },
-    
+
 
 }
