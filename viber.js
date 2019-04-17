@@ -27,7 +27,7 @@ module.exports = {
                 },
                 json: true  
                 }, function (error, response, body) {
-                   console.log(body)
+                   
                 });
         
     }
