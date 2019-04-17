@@ -100,11 +100,7 @@ async function exec(){
                                     viber.sendMessage(req.body.sender.id,req.body.message.text,vtoken)
                                   }
                                })
-                            //    responses.forEach(function(response){
-                            //        if(response.type === 'text'){
-                            //             viber.sendMessage(req.body.sender.id,req.body.message.text,)
-                            //        }
-                            //    })
+                          
                            })
                        })
                        
