@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    
 
     </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 
 <body>
 
 
        
-
-<img id="blah" alt="">
 
 
 
@@ -33,7 +34,7 @@
 
 
 
-    <form action="" enctype="multipart/form-data" id="responseForm">
+    <form action="https://override-webserver.herokuapp.com/storeResponses" method="POST" enctype="multipart/form-data" id="responseForm">
 
 
 
@@ -55,6 +56,8 @@
 </html>
 <script>
     $(document).ready(function () {
+        var uploadURL = 'https://api.cloudinary.com/v1_1/dkxbib6mi/uploads'
+        var preset = 'ao7txuag'
 
 
 
@@ -82,7 +85,28 @@
                 }
                 else if(responseArray[i].id === "image"){
                     var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    data.file = $('#'+fileID)[0].files[0]
+                   
+                    var file = $('#'+fileID)[0].files[0]
+                    var formData = new FormData()
+                    formData.append('file',file)
+                    formData.append('upload_preset',preset)
+                    axios({
+                        url: uploadURL,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data:formData,
+                    
+
+                        
+                    }).then(function(res) {
+                        console.log(res)
+                    }).catch(function(err){
+                        console.log(err)
+                    })
+
+             
                     
                 }
                 

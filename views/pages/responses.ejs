@@ -91,13 +91,28 @@
                     
                 }
                 else if(responseArray[i].id === "image"){
-                    var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    data.file = $('#'+fileID)[0].files[0]
-                    var formData =new FormData()
+                     var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
+                   
+                    var file = $('#'+fileID)[0].files[0]
+                    var formData = new FormData()
                     formData.append('file',file)
                     formData.append('upload_preset',preset)
-
                     console.log(formData)
+                    axios({
+                        url: uploadURL,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data:formData,
+                    
+
+                        
+                    }).then(function(res) {
+                        console.log(res)
+                    }).catch(function(err){
+                        console.log(err)
+                    })
                     
                 }
        
