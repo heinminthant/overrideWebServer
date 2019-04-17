@@ -84,7 +84,7 @@ app.post('/sendRoute', (req, res) => {
                             }
                             else if(result.type === 'image'){
                                
-                                viber.sendImage(req.body.sender.id,result.data,result.desc)
+                                viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
                             }
                         })
 
