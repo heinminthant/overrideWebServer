@@ -88,7 +88,7 @@ async function exec(){
                     //   console.log(token)
                       
                       var vtoken = crypto.decrypt(token)
-                      console.log(votken)
+                      console.log(vtoken)
                       
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
                            var intentID = result.intent.name.split('/')[4]
