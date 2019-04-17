@@ -94,7 +94,7 @@
             data.userID = data2.userID
             data.intentID = data2.intentID
 
-            console.log(data.responses)
+          
            
             
            $.ajax({
@@ -103,7 +103,7 @@
           data: JSON.stringify(data),
           contentType: 'application/json',
           success: function (response) {
-                M.toast({html: 'Training phrases are saved!'})
+               
                 console.log(response)
 
           }

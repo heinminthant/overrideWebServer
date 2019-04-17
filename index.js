@@ -48,7 +48,7 @@ app.post('/viberTest', (req, res) => {
 
 app.post('/sendRoute', (req, res) => {
     app.post('/' + req.body.route, (req, res) => {
-        console.log(req.body)
+       
         if (req.body.message === undefined) {
             res.send("OK")
         } else if (req.body.message.text != undefined) {
@@ -349,6 +349,9 @@ app.post('/storeResponses', (req, res) => {
     var userID = req.body.userID
     var intentID = req.body.intentID
     var responses = req.body.responses
+    console.log(userID)
+    console.log(intentID)
+    console.log(responses)
     db.updateResponse(userID, intentID, responses)
     res.send('Ok')
 })
