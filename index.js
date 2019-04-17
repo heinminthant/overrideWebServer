@@ -27,6 +27,7 @@ app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
 app.set('view engine', 'ejs');
 
 
+exec()
 
 // Home Page
 
@@ -128,7 +129,7 @@ async function exec(){
 }
 app.get('/viberRoutes',(req,res)=>{
 
-    exec()
+
  
 
 
