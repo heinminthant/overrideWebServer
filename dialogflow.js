@@ -159,7 +159,7 @@ module.exports = {
     
         const responses = await sessionClient.detectIntent(request);
         const result = responses[0].queryResult;
-        console.log(result.intent.name)
+       
      
  
     }

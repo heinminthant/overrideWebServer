@@ -85,7 +85,9 @@ async function exec(){
                       }
                       
                       
-                       dflow.detectIntent(projectID,config,req.body.message.text)
+                       dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
+                           console.log(result)
+                       })
                        
                   
                       
