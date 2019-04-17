@@ -81,7 +81,8 @@
                 responses.push($("#" + id).val())
                 }
                 else if(responseArray[i].id === "image"){
-                    console.log($("#file").val())
+                    var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
+                    console.log($('#'+fileID)[0])
                 }
                 
             }
