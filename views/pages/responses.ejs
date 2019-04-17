@@ -115,7 +115,10 @@
 
                         
                     }).then(function(res) {
-                        console.log(res)
+                        responses.push({
+                            type : 'image',
+                            data : res.data.url
+                        })
                     }).catch(function(err){
                         console.log(err)
                     })
@@ -129,7 +132,7 @@
             data.responses = responses
             data.userID = data2.userID
             data.intentID = data2.intentID
-
+            console.log(data.responses)
           
            
             
