@@ -97,7 +97,7 @@ app.post('/sendRoute', (req, res) => {
 
         
     })
-    
+    res.send("OK")
 })
 
 
