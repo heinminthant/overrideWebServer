@@ -77,7 +77,7 @@
         })
         
 
-        $("#submit").click(async function () {
+        $("#submit").click(function () {
             var responses = []
             
             
@@ -111,9 +111,7 @@
                             'Content-Type': 'application/x-www-form-urlencoded'
                         },
                         data:formData,
-                    
 
-                        
                     }).then(function(res) {
                        
                         responses.push({
@@ -131,9 +129,11 @@
            
             data = {}
             data.responses = responses
+             console.log(data.responses)
+
             data.userID = data2.userID
             data.intentID = data2.intentID
-            console.log(data.responses)
+           
           
            
             
