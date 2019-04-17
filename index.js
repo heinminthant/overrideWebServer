@@ -28,7 +28,7 @@ app.use(session({ secret: 'krunal', resave: false, saveUninitialized: true, }));
 app.set('view engine', 'ejs');
 
 
-exec()
+// exec()
 
 // Home Page
 
