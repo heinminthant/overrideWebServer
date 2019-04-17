@@ -60,6 +60,9 @@
 
 
     $(document).ready(function () {
+         var uploadURL = 'https://api.cloudinary.com/v1_1/dkxbib6mi/uploads'
+        var preset = 'ao7txuag'
+
 
             var data2 = <%- JSON.stringify(data)%>
          
@@ -70,7 +73,7 @@
         $('body').on('click', '#delete', function (e) {
             $(this).parent('div').remove()
         })
-
+        
 
         $("#submit").click(function () {
             var responses = []
