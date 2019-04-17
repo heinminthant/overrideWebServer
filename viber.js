@@ -30,10 +30,10 @@ module.exports = {
         
     },
     sendImage: function(receiver,imgURL,desc,token){
-        console.log(receiver)
-        console.log(imgURL)
-        console.log(desc)
-        console.log(token)
+        console.log("Receiver : " +receiver)
+        console.log("Img : " + imgURL)
+        console.log("Desc : " + desc)
+        console.log("Token : " + token)
         
         var req = {  
             "receiver":receiver,

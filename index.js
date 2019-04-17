@@ -78,12 +78,12 @@ app.post('/sendRoute', (req, res) => {
                         
 
                         results.forEach(function (result) {
-                            console.log(result.type)
+                        
                             if (result.type === 'text') {
                                 viber.sendMessage(req.body.sender.id, result.data, vtoken)
                             }
                             else if(result.type === 'image'){
-                                console.log("Image")
+                               
                                 viber.sendImage(req.body.sender.id,result.data,result.desc)
                             }
                         })
