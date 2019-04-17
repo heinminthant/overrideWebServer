@@ -141,6 +141,9 @@ module.exports = {
       })
     },
     detectIntent: async function(projectID,config,text){
+      return new Promise(function(resolve,reject){
+
+     
       const sessionId = uuid.v4()
       const sessionClient = new dialogflow.SessionsClient(config);
       const sessionPath = sessionClient.sessionPath(projectID, sessionId);
@@ -159,10 +162,11 @@ module.exports = {
     
         const responses = await sessionClient.detectIntent(request);
         const result = responses[0].queryResult;
-       
+        resolve(result)
      
- 
+      })
     }
+  
 
 
 }
