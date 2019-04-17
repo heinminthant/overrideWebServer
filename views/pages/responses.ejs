@@ -61,7 +61,7 @@
   
 
 
-    $(document).ready(async function () {
+    $(document).ready(function () {
          var uploadURL = 'https://api.cloudinary.com/v1_1/dkxbib6mi/upload'
         var preset = 'ao7txuag'
 
@@ -98,13 +98,13 @@
                 }
                 else if(responseArray[i].id === "image"){
                      var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    console.log(fileID)
+                
                     var file = $('#'+fileID)[0].files[0]
                     var formData = new FormData()
                     formData.append('file',file)
                     formData.append('upload_preset',preset)
-                    console.log(formData)
-                    await axios({
+                   
+                    axios({
                         url: uploadURL,
                         method: 'POST',
                         headers: {
