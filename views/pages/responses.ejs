@@ -61,7 +61,7 @@
   
 
 
-    $(document).ready(function () {
+    $(document).ready(async function () {
          var uploadURL = 'https://api.cloudinary.com/v1_1/dkxbib6mi/upload'
         var preset = 'ao7txuag'
 
@@ -104,7 +104,7 @@
                     formData.append('file',file)
                     formData.append('upload_preset',preset)
                     console.log(formData)
-                    axios({
+                    await axios({
                         url: uploadURL,
                         method: 'POST',
                         headers: {
@@ -115,11 +115,11 @@
 
                         
                     }).then(function(res) {
-                        console.log(res.data.url)
-                        // responses.push({
-                        //     type : 'image',
-                        //     data : res.data.url
-                        // })
+                       
+                        responses.push({
+                            type : 'image',
+                            data : res.data.url
+                        })
                     }).catch(function(err){
                         console.log(err)
                     })
