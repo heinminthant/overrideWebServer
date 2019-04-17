@@ -40,6 +40,11 @@ app.post('/viberTest',(req,res)=>{
     res.send("OK")
 })
 
+app.post('/sendRoute',(req,res)=>{
+    console.log(req.body.route)
+    res.send("OK")
+})
+
 
 
 app.get('/stuff',(req,res)=>{
