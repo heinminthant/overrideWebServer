@@ -87,7 +87,7 @@ app.post('/sendRoute', (req, res) => {
                                 // viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
                             }
                             else if(result.type === 'carousel'){
-                                console.log(result.data)
+                                viber.sendCarousel(req.body.sender.id,vtoken,result.data)
                             }
                         })
 
