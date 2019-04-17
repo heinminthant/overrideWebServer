@@ -91,8 +91,10 @@ async function exec(){
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
                            var intentID = result.intent.name.split('/')[4]
                            db.getResponses(intentID,document.user_id).then(function(results){
+                               
+
                                results.forEach(function(result){
-                                   console.log(result.type)
+                                  console.log(result)
                                })
                             //    responses.forEach(function(response){
                             //        if(response.type === 'text'){
