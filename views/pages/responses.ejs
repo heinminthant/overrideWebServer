@@ -84,7 +84,7 @@
             
             
 
-            var i, responseArray = $("#responses > div")
+            var i, responseArray = $("#responses").children('div')
 
           
              
@@ -103,7 +103,8 @@
                 }
                 else if(responseArray[i].id === "image"){
                      var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                
+                   var descID = responseArray[i].firstChild.firstChild.children[1].firstChild.firstChild.firstChild.id
+                    var desc = $('#'+descID).val()
                     var file = $('#'+fileID)[0].files[0]
                     var formData = new FormData()
                     formData.append('file',file)
@@ -123,7 +124,8 @@
                        
                         data.responses.push({
                             type : 'image',
-                            data : res.data.url
+                            data : res.data.url,
+                            desc :
                         })
                         
                     }).catch(function(err){
@@ -184,7 +186,7 @@
                 $("#responses").append("<p>Carousel</p>")
 
             } else if (this.id === 'image') {
-                $("#responses").append('<div id = "image" class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input type="file" id="image' + counter +'"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row"><div class="input-field col s12"><input placeholder="Description" id="first_name" type="text"></div></div></div><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div></div></div>')
+                $("#responses").append('<div id = "image" class="row"><div class="col s12 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input type="file" id="image' + counter +'"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row" id="desc"><div class="input-field col s12"><input id = "desc' + counter + '"placeholder="Description" id="first_name" type="text"></div></div></div><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a></div></div></div>')
               // Add Event hook again on newly created DOM element
               $("#file").change(function () {
                     readURL(this);
