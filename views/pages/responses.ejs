@@ -78,12 +78,13 @@
             
 
             var i, responseArray = $("#responses > div")
-            console.log(responseArray[i].id)
+            console.log(responseArray)
             for (i = 0; i < responseArray.length; i++) {
                 
                 if(responseArray[i].id === "text"){
-                 
+                    
                     var id = responseArray[i].firstChild.firstChild.id
+                    console.log(id)
                 responses.push({
                     type : 'text',
                     data : $("#" + id).val()
