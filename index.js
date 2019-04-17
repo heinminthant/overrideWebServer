@@ -85,9 +85,10 @@ async function exec(){
                           client_email: document.chat_service.dialogflow.client_email
                         }
                       }
-                      console.log(token)
+                    //   console.log(token)
                       
                       var vtoken = crypto.decrypt(token)
+                      console.log(votken)
                       
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
                            var intentID = result.intent.name.split('/')[4]
