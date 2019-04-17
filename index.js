@@ -97,7 +97,7 @@ async function exec(){
 
                                results.forEach(function(result){
                                   if(result.type === 'text'){
-                                    viber.sendMessage(req.body.sender.id,req.body.message.text,vtoken)
+                                    viber.sendMessage(req.body.sender.id,result.data,vtoken)
                                   }
                                })
                           
