@@ -100,7 +100,7 @@ module.exports = {
              })
 
         })
-        console.log(buttons)
+        
 
 
         var req = {  
@@ -112,9 +112,20 @@ module.exports = {
                "ButtonsGroupColumns":6,
                "ButtonsGroupRows":7,
                "BgColor":"#FFFFFF",
+               "Buttons":buttons
                
          }
     }
+    request.post({
+        url: 'https://chatapi.viber.com/pa/send_message',
+        body: req,
+        headers:{
+            'X-Viber-Auth-Token' : token
+        },
+        json: true  
+        }, function (error, response, body) {
+           
+        });
 
     }
 }
