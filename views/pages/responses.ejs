@@ -86,7 +86,7 @@
             var i, responseArray = $("#responses > div")
 
           
-                    
+                console.log(responseArray.length)
 
                 async function getResponses(){
                      for (i = 0; i < responseArray.length; i++) {
@@ -135,20 +135,9 @@
                 
             }
         console.log(data.responses)
-                }
-                    
-           
-           
-           getResponses()
-            
-           
-            data.userID = data2.userID
+          data.userID = data2.userID
             data.intentID = data2.intentID
-           
-          
-           
-            
-           $.ajax({
+            $.ajax({
           type: "POST",
           url: "https://override-webserver.herokuapp.com/storeResponses",
           data: JSON.stringify(data),
@@ -159,6 +148,19 @@
 
           }
       });
+                }
+                    
+           
+           
+           getResponses()
+            
+           
+          
+           
+          
+           
+            
+           
            
         })
 
