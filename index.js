@@ -313,7 +313,7 @@ app.get('/responses', (req, res) => {
 })
 
 app.post('/storePhrases', (req, res) => {
-    console.log(req.body)
+ 
     var phrases = req.body.phrases
     var user_id = req.body.userID
     var intentID = req.body.intentID
@@ -346,14 +346,15 @@ app.post('/storePhrases', (req, res) => {
 })
 
 app.post('/storeResponses', (req, res) => {
+    console.log(req.body.data)
 
-    var userID = req.body.userID
-    var intentID = req.body.intentID
-    var responses = req.body.responses
-    console.log(userID)
-    console.log(intentID)
-    console.log(responses)
-    db.updateResponse(userID, intentID, responses)
+    // var userID = req.body.userID
+    // var intentID = req.body.intentID
+    // var responses = req.body.responses
+    // console.log(userID)
+    // console.log(intentID)
+    // console.log(responses)
+    // db.updateResponse(userID, intentID, responses)
     res.send('Ok')
 })
 
