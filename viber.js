@@ -58,10 +58,13 @@ module.exports = {
                 },
                 json: true  
                 }, function (error, response, body) {
-                   console.log(error)
+                   
                 });
 
     },
+    sendCarousel: function(receiver,token,content){
+            
+    }
 
 
 }
