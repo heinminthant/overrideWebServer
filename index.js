@@ -313,6 +313,7 @@ app.get('/responses', (req, res) => {
 })
 
 app.post('/storePhrases', (req, res) => {
+    console.log(req.body)
     var phrases = req.body.phrases
     var user_id = req.body.userID
     var intentID = req.body.intentID

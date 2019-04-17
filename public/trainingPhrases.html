@@ -69,7 +69,7 @@
 
         $("#submit").click(function () {
             var responses = []
-            
+            var data = {}
 
             var i, responseArray = $("#responses > div")
 
@@ -82,10 +82,23 @@
                 }
                 else if(responseArray[i].id === "image"){
                     var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    console.log($('#'+fileID)[0])
+                    data.file = $('#'+fileID)[0].files[0]
+                    
                 }
                 
             }
+            $.ajax({
+          type: "POST",
+          url: "https://override-webserver.herokuapp.com/storeResponses",
+          data: JSON.stringify(data),
+          contentType: 'application/json',
+          success: function (response) {
+               
+                console.log(response)
+
+          }
+      });
+           
             
            
         })
