@@ -81,6 +81,7 @@
                 if(responseArray[i].id === "text"){
                  
                     var id = responseArray[i].firstChild.firstChild.id
+                    console.log(id)
                 responses.push($("#" + id).val())
                 }
                 else if(responseArray[i].id === "image"){

@@ -84,7 +84,7 @@
                 if(responseArray[i].id === "text"){
                     
                     var id = responseArray[i].firstChild.firstChild.id
-                    console.log(id)
+                    
                 responses.push({
                     type : 'text',
                     data : $("#" + id).val()
@@ -93,7 +93,7 @@
                 }
                 else if(responseArray[i].id === "image"){
                      var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    console.log("HEY")
+                    console.log(fileID)
                     var file = $('#'+fileID)[0].files[0]
                     var formData = new FormData()
                     formData.append('file',file)
