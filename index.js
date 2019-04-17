@@ -87,7 +87,7 @@ async function exec(){
                       }
                     //   console.log(token)
                       
-                      var vtoken = crypto.decrypt(token)
+                      var vtoken = crypto.decrypt(document.social_media.viber.access_token)
                       console.log(vtoken)
                       
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
