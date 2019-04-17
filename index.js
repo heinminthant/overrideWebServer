@@ -44,8 +44,13 @@ app.post('/viberTest', (req, res) => {
     res.send("OK")
 })
 
+app.post('/f265e89cc907f534771ffeca0400e303ca31b1c45ed08d72f52a8fe789ba784a43ba2662336ddd73432646ed363fe673e6713fc5cedd40880fc361cb7bf27e91',(req,res)=>{
+    if(req.body.message === undefined){
+        res.send('OK')
+    }
+})
+
 app.post('/sendRoute', (req, res) => {
-    console.log("Routing : " + req.body.route)
     app.post('/' + req.body.route, (req, res) => {
 
         if (req.body.message === undefined) {
