@@ -45,7 +45,9 @@ app.post('/viberTest', (req, res) => {
 })
 
 app.post('/sendRoute', (req, res) => {
+    console.log("Routing : " + req.body.route)
     app.post('/' + req.body.route, (req, res) => {
+
         if (req.body.message === undefined) {
             res.send("OK")
         } else if (req.body.message.text != undefined) {
@@ -65,7 +67,7 @@ app.post('/sendRoute', (req, res) => {
                 //   console.log(token)
 
                 var vtoken = crypto.decrypt(document.social_media.viber.access_token)
-                console.log(vtoken)
+                console.log("VToken : " + vtoken)
 
                 dflow.detectIntent(projectID, config, req.body.message.text).then(function (result) {
                     var intentID = result.intent.name.split('/')[4]
