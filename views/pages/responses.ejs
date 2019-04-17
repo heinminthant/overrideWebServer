@@ -67,9 +67,11 @@
         })
 
 
-
+        var uploadUrl = "https://api.cloudinary.com/v1_1/dkxbib6mi/upload"
+        var preset = 'ao7txuag'
         $("#submit").click(function () {
             var responses = []
+            
             
 
             var i, responseArray = $("#responses > div")
@@ -83,6 +85,26 @@
                     type : 'text',
                     data : $("#" + id).val()
                 })
+                    
+                }
+                else if(responseArray[i].id === "image"){
+                    var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
+                    data.file = $('#'+fileID)[0].files[0]
+                    var formData =new FormData()
+                    formData.append('file',file)
+                    formData.append('upload_preset',preset)
+
+                    $.ajax({
+          type: "POST",
+          url: uploadUrl,
+          data: formData,
+          contentType: 'application/x-www-form-urlencoded',
+          success: function (response) {
+               
+                console.log(response)
+
+          }
+      });
                     
                 }
        
