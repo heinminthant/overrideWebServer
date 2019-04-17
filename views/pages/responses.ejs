@@ -86,7 +86,9 @@
             var i, responseArray = $("#responses > div")
 
           
-                    var responses = []
+                    
+
+                async function getResponses(){
                      for (i = 0; i < responseArray.length; i++) {
                 
                 if(responseArray[i].id === "text"){
@@ -107,41 +109,34 @@
                     formData.append('file',file)
                     formData.append('upload_preset',preset)
 
-                     $.ajax({
-          type: "POST",
-          url: uploadURL,
-          data: formData,
-          contentType: 'application/json',
-          success: function (response) {
-               
-                console.log(response)
-
-          }
-      });
+              
                    
-                    // axios({
-                    //     url: uploadURL,
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/x-www-form-urlencoded'
-                    //     },
-                    //     data:formData,
+                    await axios({
+                        url: uploadURL,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data:formData,
 
-                    // }).then(function(res) {
+                    }).then(function(res) {
                        
-                    //     data.responses.push({
-                    //         type : 'image',
-                    //         data : res.data.url
-                    //     })
+                        data.responses.push({
+                            type : 'image',
+                            data : res.data.url
+                        })
                         
-                    // }).catch(function(err){
-                    //     console.log(err)
-                    // })
+                    }).catch(function(err){
+                        console.log(err)
+                    })
                     
                 }
        
                 
             }
+        console.log(data.responses)
+                }
+                    
            
            
            
