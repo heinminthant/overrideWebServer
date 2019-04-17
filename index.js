@@ -48,7 +48,7 @@ app.post('/viberTest', (req, res) => {
 
 app.post('/sendRoute', (req, res) => {
     app.post('/' + req.body.route, (req, res) => {
-
+        console.log(req.body)
         if (req.body.message === undefined) {
             res.send("OK")
         } else if (req.body.message.text != undefined) {
@@ -83,6 +83,7 @@ app.post('/sendRoute', (req, res) => {
 
                     })
                 })
+                res.send("OK")
 
 
 
@@ -94,7 +95,7 @@ app.post('/sendRoute', (req, res) => {
 
 
 
-        res.send("OK")
+        
     })
     
 })
