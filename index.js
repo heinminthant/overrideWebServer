@@ -69,69 +69,69 @@ app.post('/viber',(req,res)=>{
   
 });
 
-async function exec(){
+// async function exec(){
     
-    db.getTokens().then(function(result){
-       result.forEach(function(token){
-           token = token.social_media.viber.access_token
+//     db.getTokens().then(function(result){
+//        result.forEach(function(token){
+//            token = token.social_media.viber.access_token
           
            
-           var route = '/'+token
+//            var route = '/'+token
        
-           app.post(route,(req,res)=>{
-               if(req.body.message === undefined){
-                   res.send("OK")
-               }
+//            app.post(route,(req,res)=>{
+//                if(req.body.message === undefined){
+//                    res.send("OK")
+//                }
                
-               else if(req.body.message.text != undefined){
-                var token = req.originalUrl.substr(1)
-                token = token.split('?')[0]
-                     db.getUserIDToken(token).then(function(document){
-                    var privateKey = document.chat_service.dialogflow.private_key;
-                    var projectID = document.chat_service.dialogflow.project_id
-                    var privateKey = crypto.decrypt(privateKey);
+//                else if(req.body.message.text != undefined){
+//                 var token = req.originalUrl.substr(1)
+//                 token = token.split('?')[0]
+//                      db.getUserIDToken(token).then(function(document){
+//                     var privateKey = document.chat_service.dialogflow.private_key;
+//                     var projectID = document.chat_service.dialogflow.project_id
+//                     var privateKey = crypto.decrypt(privateKey);
                       
-                      let config = {
-                        credentials: {
-                          private_key: privateKey,
-                          client_email: document.chat_service.dialogflow.client_email
-                        }
-                      }
-                    //   console.log(token)
+//                       let config = {
+//                         credentials: {
+//                           private_key: privateKey,
+//                           client_email: document.chat_service.dialogflow.client_email
+//                         }
+//                       }
+//                     //   console.log(token)
                       
-                      var vtoken = crypto.decrypt(document.social_media.viber.access_token)
-                      console.log(vtoken)
+//                       var vtoken = crypto.decrypt(document.social_media.viber.access_token)
+//                       console.log(vtoken)
                       
-                       dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
-                           var intentID = result.intent.name.split('/')[4]
-                           db.getResponses(intentID,document.user_id).then(function(results){
+//                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
+//                            var intentID = result.intent.name.split('/')[4]
+//                            db.getResponses(intentID,document.user_id).then(function(results){
                                
 
-                               results.forEach(function(result){
-                                  if(result.type === 'text'){
-                                    viber.sendMessage(req.body.sender.id,result.data,vtoken)
-                                  }
-                               })
+//                                results.forEach(function(result){
+//                                   if(result.type === 'text'){
+//                                     viber.sendMessage(req.body.sender.id,result.data,vtoken)
+//                                   }
+//                                })
                           
-                           })
-                       })
+//                            })
+//                        })
                        
                   
                       
 
                    
-                })
-               }
+//                 })
+//                }
           
                 
                 
                
-                res.send("OK")
-           })
-       })
-    })
+//                 res.send("OK")
+//            })
+//        })
+//     })
   
-}
+// }
 app.get('/viberRoutes',(req,res)=>{
 
 
