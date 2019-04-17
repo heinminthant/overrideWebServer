@@ -115,10 +115,11 @@
 
                         
                     }).then(function(res) {
-                        responses.push({
-                            type : 'image',
-                            data : res.data.url
-                        })
+                        console.log(res.url)
+                        // responses.push({
+                        //     type : 'image',
+                        //     data : res.data.url
+                        // })
                     }).catch(function(err){
                         console.log(err)
                     })
