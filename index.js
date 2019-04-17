@@ -70,8 +70,11 @@ async function exec(){
            var route = '/'+token
        
            app.post(route,(req,res)=>{
+               if(req.body.message === undefined){
+                   res.send("OK")
+               }
                
-               if(req.body.message.text != undefined){
+               else if(req.body.message.text != undefined){
                 var token = req.originalUrl.substr(1)
                 token = token.split('?')[0]
                      db.getUserIDToken(token).then(function(document){
@@ -110,28 +113,7 @@ async function exec(){
                    
                 })
                }
-            //     console.log(req.body.text)
-
-            //     db.getUserIDToken(token).then(function(document){
-            //         var privateKey = document.chat_service.dialogflow.private_key;
-            //         var projectID = document.chat_service.dialogflow.project_id
-            //         var privateKey = crypto.decrypt(privateKey);
-                      
-            //           let config = {
-            //             credentials: {
-            //               private_key: privateKey,
-            //               client_email: document.chat_service.dialogflow.client_email
-            //             }
-            //           }
-            //         //   console.log(projectID)
-            //         //   console.log(req.body.text)
-            //           dflow.detectIntent(projectID,config,'Hey').then(function(result){
-            //               console.log(result)
-            //           })
-
-                   
-            //     })
-            //    }
+          
                 
                 
                
