@@ -159,6 +159,11 @@ module.exports = {
                             console.log(result)
                         })
                     }
+                    else{
+                        collection.updateOne({user_id,intentID},{$set : {responses:responses}})
+
+                        
+                    }
                 })
             })
         },
