@@ -80,11 +80,11 @@ app.post('/sendRoute', (req, res) => {
                         results.forEach(function (result) {
                         
                             if (result.type === 'text') {
-                                // viber.sendMessage(req.body.sender.id, result.data, vtoken)
+                                viber.sendMessage(req.body.sender.id, result.data, vtoken)
                             }
                             else if(result.type === 'image'){
                                
-                                // viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
+                                viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
                             }
                             else if(result.type === 'carousel'){
                                 viber.sendCarousel(req.body.sender.id,vtoken,result.data)
