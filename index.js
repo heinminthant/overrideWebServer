@@ -87,7 +87,8 @@ async function exec(){
                       
                       
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
-                           console.log(result.intent.name)
+                           var intentID = result.intent.name.split('/')[4]
+                           console.log(intentID)
                        })
                        
                   
