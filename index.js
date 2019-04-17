@@ -91,8 +91,7 @@ async function exec(){
                        dflow.detectIntent(projectID,config,req.body.message.text).then(function(result){
                            var intentID = result.intent.name.split('/')[4]
                            db.getResponses(intentID,document.user_id).then(function(result){
-                               var responses = result.responses
-                               console.log(responses)
+                               console.log(result.responses)
                             //    responses.forEach(function(response){
                             //        if(response.type === 'text'){
                             //             viber.sendMessage(req.body.sender.id,req.body.message.text,vtoken)
