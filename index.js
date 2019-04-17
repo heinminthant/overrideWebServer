@@ -75,9 +75,10 @@ app.post('/sendRoute', (req, res) => {
                 dflow.detectIntent(projectID, config, req.body.message.text).then(function (result) {
                     var intentID = result.intent.name.split('/')[4]
                     db.getResponses(intentID, document.user_id).then(function (results) {
-
+                        console.log(results)
 
                         results.forEach(function (result) {
+                            
                             if (result.type === 'text') {
                                 viber.sendMessage(req.body.sender.id, result.data, vtoken)
                             }
