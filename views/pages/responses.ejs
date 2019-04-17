@@ -150,6 +150,7 @@
                         var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
                         var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
                         
+                        var file = $('#'+fileID)[0].files[0]
                         var title = $('#'+titleID).val()
                         var subtitle = $('#'+subtitleID).val()
                         var button = $('#'+buttonID).val()
@@ -173,6 +174,7 @@
                             subtitle : subtitle,
                             button : button
                         })
+                       
                         
                     }).catch(function(err){
                         console.log(err)
