@@ -85,8 +85,7 @@
 
             var i, responseArray = $("#responses > div")
 
-            function getResponses(){
-                return new Promise(function(resolve,reject){
+          
                     var responses = []
                      for (i = 0; i < responseArray.length; i++) {
                 
@@ -94,7 +93,7 @@
                     
                     var id = responseArray[i].firstChild.firstChild.id
                     
-                    responses.push({
+                    data.responses.push({
                     type : 'text',
                     data : $("#" + id).val()
                 })
@@ -118,10 +117,11 @@
 
                     }).then(function(res) {
                        
-                        responses.push({
+                        data.responses.push({
                             type : 'image',
                             data : res.data.url
                         })
+                        
                     }).catch(function(err){
                         console.log(err)
                     })
@@ -130,20 +130,11 @@
        
                 
             }
-            resolve(responses)
-
-                })
-            }
-            async function getResponses(){
-                var responses = await getResponses()
-                console.log(responses)
-            }
-            getResponses()
            
            
            
             
-
+            console.log(data.responses)
             data.userID = data2.userID
             data.intentID = data2.intentID
            
