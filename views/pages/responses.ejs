@@ -106,25 +106,37 @@
                     var formData = new FormData()
                     formData.append('file',file)
                     formData.append('upload_preset',preset)
-                   
-                    axios({
-                        url: uploadURL,
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        data:formData,
 
-                    }).then(function(res) {
+                     $.ajax({
+          type: "POST",
+          url: uploadURL,
+          data: formData,
+          contentType: 'application/json',
+          success: function (response) {
+               
+                console.log(response)
+
+          }
+      });
+                   
+                    // axios({
+                    //     url: uploadURL,
+                    //     method: 'POST',
+                    //     headers: {
+                    //         'Content-Type': 'application/x-www-form-urlencoded'
+                    //     },
+                    //     data:formData,
+
+                    // }).then(function(res) {
                        
-                        data.responses.push({
-                            type : 'image',
-                            data : res.data.url
-                        })
+                    //     data.responses.push({
+                    //         type : 'image',
+                    //         data : res.data.url
+                    //     })
                         
-                    }).catch(function(err){
-                        console.log(err)
-                    })
+                    // }).catch(function(err){
+                    //     console.log(err)
+                    // })
                     
                 }
        
