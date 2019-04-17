@@ -75,22 +75,26 @@
         $('body').on('click', '#delete', function (e) {
             $(this).parent('div').remove()
         })
-        
+         data = {}
+            data.responses = []
 
         $("#submit").click(function () {
-            var responses = []
+       
             
             
 
             var i, responseArray = $("#responses > div")
-            
-            for (i = 0; i < responseArray.length; i++) {
+
+            function getResponses(){
+                return new Promise(function(resolve,reject){
+                    var responses = []
+                     for (i = 0; i < responseArray.length; i++) {
                 
                 if(responseArray[i].id === "text"){
                     
                     var id = responseArray[i].firstChild.firstChild.id
                     
-                responses.push({
+                    responses.push({
                     type : 'text',
                     data : $("#" + id).val()
                 })
@@ -126,10 +130,19 @@
        
                 
             }
+            resolve(responses)
+
+                })
+            }
+            async function getResponses(){
+                var responses = await getResponses()
+                console.log(responses)
+            }
+            getResponses()
            
-            data = {}
-            data.responses = responses
-             console.log(data.responses)
+           
+           
+            
 
             data.userID = data2.userID
             data.intentID = data2.intentID
