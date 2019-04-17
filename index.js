@@ -36,7 +36,9 @@ app.get('/',(req,res)=>{
     res.send('<h1>Testing</h1>');
 });
 
-
+app.post('/viberTest',(req,res)=>{
+    res.send("OK")
+})
 
 
 
