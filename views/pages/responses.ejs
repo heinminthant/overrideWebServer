@@ -160,44 +160,44 @@
                         var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
                         
 
-                        console.log(titleID)
+                        
 
-                        // var file = $('#'+fileID)[0].files[0]
-                        // var title = $('#'+titleID).val()
-                        // var subtitle = $('#'+subtitleID).val()
-                        // var button = $('#'+buttonID).val()
-                        // var formData = new FormData()
-                        // formData.append('file',file)
-                        // formData.append('upload_preset',preset)
+                        var file = $('#'+fileID)[0].files[0]
+                        var title = $('#'+titleID).val()
+                        var subtitle = $('#'+subtitleID).val()
+                        var button = $('#'+buttonID).val()
+                        var formData = new FormData()
+                        formData.append('file',file)
+                        formData.append('upload_preset',preset)
 
-                        // await axios({
-                        // url: uploadURL,
-                        // method: 'POST',
-                        // headers: {
-                        //     'Content-Type': 'application/x-www-form-urlencoded'
-                        // },
-                        // data:formData,
+                        await axios({
+                        url: uploadURL,
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        data:formData,
 
-                        // }).then(function(res) {
+                        }).then(function(res) {
                        
                         
-                        // content.push({
-                        //     title : title,
-                        //     subtitle : subtitle,
-                        //     button : button,
-                        //     imgURL : res.data.url
-                        // })
+                        content.push({
+                            title : title,
+                            subtitle : subtitle,
+                            button : button,
+                            imgURL : res.data.url
+                        })
                        
                         
                     }).catch(function(err){
                         console.log(err)
                     })
-
-                    }
-                    data.responses.push({
+                        data.responses.push({
                             type : 'carousel',
                             data : content
                         })
+                    }
+                    
                     
                 }
                 
