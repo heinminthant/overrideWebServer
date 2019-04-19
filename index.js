@@ -70,7 +70,7 @@ app.post('/sendRoute', (req, res) => {
                 //   console.log(token)
 
                 var vtoken = crypto.decrypt(document.social_media.viber.access_token)
-                console.log("VToken : " + vtoken)
+              
 
                 dflow.detectIntent(projectID, config, req.body.message.text).then(function (result) {
                     var intentID = result.intent.name.split('/')[4]
@@ -361,7 +361,7 @@ app.post('/storeResponses', (req, res) => {
     var intentID = req.body.intentID
     var responses = req.body.responses
     
-    console.log(responses)
+  
     db.updateResponse(userID, intentID, responses)
     res.send('Ok')
 })
