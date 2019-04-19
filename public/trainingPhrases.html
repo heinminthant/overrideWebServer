@@ -72,82 +72,105 @@
         })
 
         $('body').on('click','#add_card',function(e){
+           
+            var carouselID = $(this).parent('div').parent('div').parent('div').attr("id")
+
             
-            $("#carousel"+(carouselCounter-1)).append('<div class="col s10 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input type="file" id="image' + counter +'"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row"><div class="input-field col s12"><input placeholder="Title" id="title' + counter +'" type="text"></div></div><div class="row"><div class="input-field col s12"><input placeholder="Subtitle" id="subtitle'+ counter +'" type="text"></div></div></div><div class="card-action"><div class="row"><div class="input-field col s12"><input placeholder="Button Name" id="button' + counter + '" type="text"></div></div></div><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a><a  class="waves-effect waves-light btn" id="add_card"><i class="material-icons">add</i></a></div>')
-            console.log( $(this).parent('div').parent())
+            $("#"+carouselID).append('<div class="col s10 m3"><div class="card"><div class="card-content"><div class="file-field input-field"><div class="btn"><span>File</span><input type="file" id="image' + counter +'"></div><div class="file-path-wrapper"><input class="file-path validate" type="text"></div></div></div><div class="card-content"><div class="row"><div class="input-field col s12"><input placeholder="Title" id="title' + counter +'" type="text"></div></div><div class="row"><div class="input-field col s12"><input placeholder="Subtitle" id="subtitle'+ counter +'" type="text"></div></div></div><div class="card-action"><div class="row"><div class="input-field col s12"><input placeholder="Button Name" id="button' + counter + '" type="text"></div></div></div><a class="waves-effect waves-light btn" id="delete"><i class="material-icons">delete</i></a><a  class="waves-effect waves-light btn" id="add_card"><i class="material-icons">add</i></a></div>')
+            
             counter ++
         })
 
 
 
         $("#submit").click(function () {
-            var responses = []
+            // var responses = []
             
             responseArray = $("#responses").children('div')
+            
+            var i
+            for(i = 0; i < responseArray.length; i++){
+                if(responseArray[i].id.substring(0,8) === 'carousel'){
+                    // console.log(responseArray[i].id)
+                var children =  responseArray[i].children
+                var j 
+                for(j = 0; j < children.length; j++){
+                    var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
+                    var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
+                    var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
+                    console.log(titleID)
+                    console.log(subtitleID)
+                    console.log(buttonID)
+                }
+
+                }
+               
+
+            }
            
 
-            var i
+            // var i
 
-            for (i = 0; i < responseArray.length; i++) {
+            // for (i = 0; i < responseArray.length; i++) {
                 
-                if(responseArray[i].id === "text"){
+            //     if(responseArray[i].id === "text"){
                  
-                    var id = responseArray[i].firstChild.firstChild.id
-                    // console.log(id)
-                responses.push($("#" + id).val())
-                }
-                else if(responseArray[i].id === "image"){
-                    var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
+            //         var id = responseArray[i].firstChild.firstChild.id
+            //         // console.log(id)
+            //     responses.push($("#" + id).val())
+            //     }
+            //     else if(responseArray[i].id === "image"){
+            //         var fileID = responseArray[i].firstChild.firstChild.firstChild.firstChild.firstChild.lastChild.id
 
-                    var descID = responseArray[i].firstChild.firstChild.children[1].firstChild.firstChild.firstChild.id
+            //         var descID = responseArray[i].firstChild.firstChild.children[1].firstChild.firstChild.firstChild.id
                     
-                    // console.log(fileID)
+            //         // console.log(fileID)
 
                     
-                    // var file = $('#'+fileID)[0].files[0]
-                    // var formData = new FormData()
-                    // formData.append('file',file)
-                    // formData.append('upload_preset',preset)
-                    // axios({
-                    //     url: uploadURL,
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/x-www-form-urlencoded'
-                    //     },
-                    //     data:formData,
+            //         // var file = $('#'+fileID)[0].files[0]
+            //         // var formData = new FormData()
+            //         // formData.append('file',file)
+            //         // formData.append('upload_preset',preset)
+            //         // axios({
+            //         //     url: uploadURL,
+            //         //     method: 'POST',
+            //         //     headers: {
+            //         //         'Content-Type': 'application/x-www-form-urlencoded'
+            //         //     },
+            //         //     data:formData,
                     
 
                         
-                    // }).then(function(res) {
-                    //     console.log(res)
-                    // }).catch(function(err){
-                    //     console.log(err)
-                    // })
+            //         // }).then(function(res) {
+            //         //     console.log(res)
+            //         // }).catch(function(err){
+            //         //     console.log(err)
+            //         // })
 
              
                     
-                }
-                else if(responseArray[i].id === 'carousel'){
-                    var children = responseArray[i].children
-                    var i
-                    for(i = 0;i < children.length; i++){
-                        var fileID = children[i].firstChild.firstChild.firstChild.firstChild.lastChild.id
-                        var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
-                        var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
-                        var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
+            //     }
+            //     else if(responseArray[i].id === 'carousel'){
+            //         var children = responseArray[i].children
+            //         var i
+            //         for(i = 0;i < children.length; i++){
+            //             var fileID = children[i].firstChild.firstChild.firstChild.firstChild.lastChild.id
+            //             var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
+            //             var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
+            //             var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
                         
-                        console.log($('#'+titleID).val())
-                        console.log($('#'+subtitleID).val())
-                        console.log($('#'+buttonID).val())
+            //             console.log($('#'+titleID).val())
+            //             console.log($('#'+subtitleID).val())
+            //             console.log($('#'+buttonID).val())
 
-                    }
-                }
+            //         }
+            //     }
                 
-            }
-            var data = {
+            // }
+            // var data = {
                 
-            }
-            data.val = 123
+            // }
+            // data.val = 123
             
            
             
@@ -177,7 +200,6 @@
 
             }
             counter++
-            carouselCounter++
 
         })
 
