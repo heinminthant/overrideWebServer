@@ -170,7 +170,7 @@
                         formData.append('file',file)
                         formData.append('upload_preset',preset)
 
-                        axios({
+                        await axios({
                         url: uploadURL,
                         method: 'POST',
                         headers: {
