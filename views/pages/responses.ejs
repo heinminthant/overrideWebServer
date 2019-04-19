@@ -150,51 +150,54 @@
                 }
                 else if(responseArray[i].id.substring(0,8) === 'carousel'){
                     console.log(responseArray[i].id)
-                    // var content = []
-                    //  var children = responseArray[i].children
-                    // var i
-                    // for(i = 0;i < children.length; i++){
-                    //     var fileID = children[i].firstChild.firstChild.firstChild.firstChild.lastChild.id
-                    //     var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
-                    //     var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
-                    //     var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
+                    var content = []
+                     var children = responseArray[i].children
+                    var i
+                    for(i = 0;i < children.length; i++){
+                        var fileID = children[i].firstChild.firstChild.firstChild.firstChild.lastChild.id
+                        var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
+                        var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
+                        var buttonID = children[i].firstChild.children[2].lastChild.firstChild.firstChild.id
                         
-                    //     var file = $('#'+fileID)[0].files[0]
-                    //     var title = $('#'+titleID).val()
-                    //     var subtitle = $('#'+subtitleID).val()
-                    //     var button = $('#'+buttonID).val()
-                    //     var formData = new FormData()
-                    //     formData.append('file',file)
-                    //     formData.append('upload_preset',preset)
 
-                    //     await axios({
-                    //     url: uploadURL,
-                    //     method: 'POST',
-                    //     headers: {
-                    //         'Content-Type': 'application/x-www-form-urlencoded'
-                    //     },
-                    //     data:formData,
+                        console.log(titleID)
 
-                    //     }).then(function(res) {
+                        // var file = $('#'+fileID)[0].files[0]
+                        // var title = $('#'+titleID).val()
+                        // var subtitle = $('#'+subtitleID).val()
+                        // var button = $('#'+buttonID).val()
+                        // var formData = new FormData()
+                        // formData.append('file',file)
+                        // formData.append('upload_preset',preset)
+
+                        // await axios({
+                        // url: uploadURL,
+                        // method: 'POST',
+                        // headers: {
+                        //     'Content-Type': 'application/x-www-form-urlencoded'
+                        // },
+                        // data:formData,
+
+                        // }).then(function(res) {
                        
                         
-                    //     content.push({
-                    //         title : title,
-                    //         subtitle : subtitle,
-                    //         button : button,
-                    //         imgURL : res.data.url
-                    //     })
+                        // content.push({
+                        //     title : title,
+                        //     subtitle : subtitle,
+                        //     button : button,
+                        //     imgURL : res.data.url
+                        // })
                        
                         
-                    // }).catch(function(err){
-                    //     console.log(err)
-                    // })
+                    }).catch(function(err){
+                        console.log(err)
+                    })
 
-                    // }
-                    // data.responses.push({
-                    //         type : 'carousel',
-                    //         data : content
-                    //     })
+                    }
+                    data.responses.push({
+                            type : 'carousel',
+                            data : content
+                        })
                     
                 }
                 
