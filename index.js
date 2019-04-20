@@ -79,7 +79,10 @@ app.post('/sendRoute', (req, res) => {
 
                 dflow.detectIntent(projectID, config, req.body.message.text).then(function (result) {
                     var intentID = result.intent.name.split('/')[4]
+                    console.log(user_id)
+                    console.log(intentID)
                     responseCollection.findOne({user_id,intentID}).then(function(results){
+                        
                         results.forEach(function (result) {
                         
                             if (result.type === 'text') {
