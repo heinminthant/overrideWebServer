@@ -371,7 +371,7 @@ app.post('/storeResponses', (req, res) => {
     collection.findOne({user_id:userID,intentID}).then(function(result){
         if(result === null){
             doc = {
-                "user_id" : user_id,
+                "user_id" : userID,
                 "intentID" : intentID,
                 "responses" : responses
             }
