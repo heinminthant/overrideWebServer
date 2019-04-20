@@ -361,6 +361,7 @@ app.post('/storeResponses', (req, res) => {
     var intentID = req.body.intentID
     var responses = req.body.responses
     console.log(responses)
+    console.log(req.body)
   
     db.updateResponse(userID, intentID, responses)
     res.send('Ok')
