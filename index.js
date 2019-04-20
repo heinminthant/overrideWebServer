@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/mmkg', (req, res) => {
-    collection.findOne({token:token}).then(function(document){
+    collection.findOne({token:"f265e89cc907f534771ffeca0400e303ca31b1c45ed08d72f52a8fe789ba784a43ba2662336ddd73432646ed363fe673e6713fc5cedd40880fc361cb7bf27e91"}).then(function(document){
         var privateKey = document.chat_service.dialogflow.private_key;
         var projectID = document.chat_service.dialogflow.project_id
         var privateKey = crypto.decrypt(privateKey);
