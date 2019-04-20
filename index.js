@@ -328,7 +328,7 @@ app.post('/storePhrases', (req, res) => {
     var phrases = req.body.phrases
     var user_id = req.body.userID
     var intentID = req.body.intentID
-    collection.findOne({user_id:user_id}).then(function(result){
+    collection.findOne({user_id:user_id}).then(function(document){
 
         var privateKey = document.chat_service.dialogflow.private_key;
         var projectID = document.chat_service.dialogflow.project_id
