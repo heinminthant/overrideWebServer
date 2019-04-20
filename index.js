@@ -82,20 +82,20 @@ app.post('/sendRoute', (req, res) => {
                     console.log(user_id)
                     console.log(intentID)
                     responseCollection.findOne({user_id,intentID}).then(function(results){
+                        console.log(results)
+                        // results.forEach(function (result) {
                         
-                        results.forEach(function (result) {
-                        
-                            if (result.type === 'text') {
-                                viber.sendMessage(req.body.sender.id, result.data, vtoken)
-                            }
-                            else if(result.type === 'image'){
+                        //     if (result.type === 'text') {
+                        //         viber.sendMessage(req.body.sender.id, result.data, vtoken)
+                        //     }
+                        //     else if(result.type === 'image'){
                                
-                                viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
-                            }
-                            else if(result.type === 'carousel'){
-                                viber.sendCarousel(req.body.sender.id,vtoken,result.data)
-                            }
-                        })
+                        //         viber.sendImage(req.body.sender.id,result.data,result.desc,vtoken)
+                        //     }
+                        //     else if(result.type === 'carousel'){
+                        //         viber.sendCarousel(req.body.sender.id,vtoken,result.data)
+                        //     }
+                        // })
                     })
                 
                 })
