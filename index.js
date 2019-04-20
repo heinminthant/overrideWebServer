@@ -52,15 +52,6 @@ app.get('/', (req, res) => {
     res.send('<h1>Testing</h1>');
 });
 
-app.get('/mmkg', (req, res) => {
-    collection.findOne({token:"f265e89cc907f534771ffeca0400e303ca31b1c45ed08d72f52a8fe789ba784a43ba2662336ddd73432646ed363fe673e6713fc5cedd40880fc361cb7bf27e91"}).then(function(document){
-        var privateKey = document.chat_service.dialogflow.private_key;
-        var projectID = document.chat_service.dialogflow.project_id
-        var privateKey = crypto.decrypt(privateKey);
-        console.log(privateKey)
-    })
-})
-
 
 
 app.post('/sendRoute', (req, res) => {
@@ -75,29 +66,20 @@ app.post('/sendRoute', (req, res) => {
                 var privateKey = document.chat_service.dialogflow.private_key;
                 var projectID = document.chat_service.dialogflow.project_id
                 var privateKey = crypto.decrypt(privateKey);
-                console.log(privateKey)
-            })
-            db.getUserIDToken(token).then(function (document) {
-                var privateKey = document.chat_service.dialogflow.private_key;
-                var projectID = document.chat_service.dialogflow.project_id
-                var privateKey = crypto.decrypt(privateKey);
-
+                var user_id = document.user_id
+                
                 let config = {
                     credentials: {
                         private_key: privateKey,
                         client_email: document.chat_service.dialogflow.client_email
                     }
                 }
-                //   console.log(token)
 
                 var vtoken = crypto.decrypt(document.social_media.viber.access_token)
-              
 
                 dflow.detectIntent(projectID, config, req.body.message.text).then(function (result) {
                     var intentID = result.intent.name.split('/')[4]
-                    db.getResponses(intentID, document.user_id).then(function (results) {
-                        
-
+                    responseCollection.findOne({user_id,intentID}).then(function(results){
                         results.forEach(function (result) {
                         
                             if (result.type === 'text') {
@@ -111,16 +93,13 @@ app.post('/sendRoute', (req, res) => {
                                 viber.sendCarousel(req.body.sender.id,vtoken,result.data)
                             }
                         })
-
                     })
+                
                 })
                 res.send("OK")
-
-
-
-
-
+                
             })
+            
         }
 
 
@@ -260,13 +239,13 @@ app.get('/trainingPhrases', (req, res) => {
             intentID: req.query.intentID
         }
 
-        db.getDocument(user_id).then(function (result) {
+        collection.findOne({user_id:user_id}).then(function(result){
             if (req.session.token === undefined || req.session.token !== result.utoken) {
                 res.render('pages/login', {
                     data: data
                 })
             } else {
-                db.getDocument(user_id).then(function (document) {
+                collection.findOne({user_id:user_id}).then(function(document){
                     var privateKey = document.chat_service.dialogflow.private_key;
                     var projectID = document.chat_service.dialogflow.project_id
                     var privateKey = crypto.decrypt(privateKey);
@@ -306,6 +285,7 @@ app.get('/trainingPhrases', (req, res) => {
     }
 
 })
+
 app.get('/responses', (req, res) => {
 
     if (req.session.token === undefined) {
@@ -326,7 +306,7 @@ app.get('/responses', (req, res) => {
             site: "responses"
         }
 
-        db.getDocument(user_id).then(function (result) {
+        collection.findOne({user_id:user_id}).then(function(result){
             if (req.session.token === undefined || req.session.token !== result.utoken) {
                 res.render('pages/login', {
                     data: data
@@ -348,7 +328,7 @@ app.post('/storePhrases', (req, res) => {
     var phrases = req.body.phrases
     var user_id = req.body.userID
     var intentID = req.body.intentID
-    db.getDocument(user_id).then(function (document) {
+    collection.findOne({user_id:user_id}).then(function(result){
 
         var privateKey = document.chat_service.dialogflow.private_key;
         var projectID = document.chat_service.dialogflow.project_id
@@ -384,7 +364,7 @@ app.post('/storeResponses', (req, res) => {
     console.log(responses)
     console.log(req.body)
   
-    db.updateResponse(userID, intentID, responses)
+    collection.updateOne({user_id:userID,intentID},{$set:{responses:responses}})
     res.send('Ok')
 })
 })
