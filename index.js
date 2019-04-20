@@ -368,7 +368,24 @@ app.post('/storeResponses', (req, res) => {
     console.log(responses)
     console.log(req.body)
   
-    collection.updateOne({user_id:userID,intentID},{$set:{responses:responses}})
+    collection.findOne({user_id:userID,intentID}).then(function(result){
+        if(result === null){
+            doc = {
+                "user_id" : user_id,
+                "intentID" : intentID,
+                "responses" : responses
+            }
+
+            collection.insertOne(doc).then(function(result){
+                console.log(result)
+            })
+        }
+        else{
+            collection.updateOne({user_id,intentID},{$set : {responses:responses}})
+
+            
+        }
+    })
     res.send('Ok')
 })
 })
