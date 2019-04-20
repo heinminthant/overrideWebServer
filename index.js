@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const formidable = require('formidable')
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://admin:admin123@override-nekvr.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+
+
 
 
 
@@ -17,6 +22,11 @@ const crypto = require('./crypto')
 const viber = require('./viber')
 
 //Web Server Init   
+
+client.connect(err => {
+
+const collection = client.db("over_ride").collection("users");
+const responseCollection = client.db("over_ride").collection("responses")
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -42,8 +52,11 @@ app.get('/', (req, res) => {
     res.send('<h1>Testing</h1>');
 });
 
-app.post('/viberTest', (req, res) => {
-    res.send("OK")
+app.get('/mmkg', (req, res) => {
+    var privateKey = document.chat_service.dialogflow.private_key;
+    var projectID = document.chat_service.dialogflow.project_id
+    var privateKey = crypto.decrypt(privateKey);
+    console.log(privateKey)
 })
 
 
@@ -56,6 +69,12 @@ app.post('/sendRoute', (req, res) => {
         } else if (req.body.message.text != undefined) {
             var token = req.originalUrl.substr(1)
             token = token.split('?')[0]
+            collection.findOne({token:token}).then(function(document){
+                var privateKey = document.chat_service.dialogflow.private_key;
+                var projectID = document.chat_service.dialogflow.project_id
+                var privateKey = crypto.decrypt(privateKey);
+                console.log(privateKey)
+            })
             db.getUserIDToken(token).then(function (document) {
                 var privateKey = document.chat_service.dialogflow.private_key;
                 var projectID = document.chat_service.dialogflow.project_id
@@ -365,6 +384,7 @@ app.post('/storeResponses', (req, res) => {
   
     db.updateResponse(userID, intentID, responses)
     res.send('Ok')
+})
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

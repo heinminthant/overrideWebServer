@@ -10,7 +10,7 @@ module.exports = {
     insertDocument: function(doc){
         client.connect(err => {
             const collection = client.db("over_ride").collection("users");
-
+            
             collection.insertOne(doc)
            
            
