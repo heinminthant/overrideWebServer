@@ -368,7 +368,7 @@ app.post('/storeResponses', (req, res) => {
     console.log(responses)
     console.log(req.body)
   
-    collection.findOne({user_id:userID,intentID}).then(function(result){
+    responseCollection.findOne({user_id:userID,intentID}).then(function(result){
         if(result === null){
             doc = {
                 "user_id" : userID,
@@ -376,12 +376,12 @@ app.post('/storeResponses', (req, res) => {
                 "responses" : responses
             }
 
-            collection.insertOne(doc).then(function(result){
+           responseCollection.insertOne(doc).then(function(result){
                 console.log(result)
             })
         }
         else{
-            collection.updateOne({userID,intentID},{$set : {responses:responses}})
+           responseCollection.updateOne({userID,intentID},{$set : {responses:responses}})
 
             
         }
