@@ -356,6 +356,10 @@ app.post('/storePhrases', (req, res) => {
     })
 })
 
+app.post('/viberTest',(req,res)=>{
+    res.send("OK")
+})
+
 app.post('/storeResponses', (req, res) => {
    
     var userID = req.body.userID
