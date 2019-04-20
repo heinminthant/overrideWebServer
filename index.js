@@ -16,7 +16,7 @@ const dflow = require('./dialogflow')
 const crypto = require('./crypto')
 const viber = require('./viber')
 
-//Web Server Init
+//Web Server Init   
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ app.use(session({
     secret: 'krunal',
     resave: false,
     saveUninitialized: true,
-}));
+}));    
 
 
 
@@ -119,9 +119,9 @@ app.get('/stuff', (req, res) => {
 
 
 // Request sent from viber
-app.post('/viber', (req, res) => {
-    console.log(req.body)
-    res.send("Hello")
+// app.post('/viber', (req, res) => {
+//     console.log(req.body)
+//     res.send("Hello")
 
     // if(req.body.message != undefined){
     //    //  console.log("It is undefined ");
@@ -130,7 +130,7 @@ app.post('/viber', (req, res) => {
     //     db.getDocument()
     // }
 
-});
+// });
 
 // async function exec(){
 
@@ -195,14 +195,14 @@ app.post('/viber', (req, res) => {
 //     })
 
 // }
-app.get('/viberRoutes', (req, res) => {
+// app.get('/viberRoutes', (req, res) => {
 
 
 
 
 
-    res.send("Hello")
-})
+//     res.send("Hello")
+// })
 
 
 

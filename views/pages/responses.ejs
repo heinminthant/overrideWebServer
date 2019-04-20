@@ -152,8 +152,8 @@
                     console.log(responseArray[i].id)
                     var content = []
                      var children = responseArray[i].children
-                    var i
-                    for(i = 0;i < children.length; i++){
+                   
+                    for(let i = 0;i < children.length; i++){
                         var fileID = children[i].firstChild.firstChild.firstChild.firstChild.lastChild.id
                         var titleID = children[i].firstChild.children[1].firstChild.firstChild.firstChild.id
                         var subtitleID = children[i].firstChild.children[1].lastChild.firstChild.firstChild.id
