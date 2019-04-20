@@ -381,7 +381,7 @@ app.post('/storeResponses', (req, res) => {
             })
         }
         else{
-            collection.updateOne({user_id,intentID},{$set : {responses:responses}})
+            collection.updateOne({userID,intentID},{$set : {responses:responses}})
 
             
         }
